@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=4 format=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.812834 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ProceduralSky" id=1]
+ground_horizon_color = Color( 0.839216, 0.917647, 0.980392, 1 )
+ground_curve = 0.0585634
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+fog_enabled = true
+fog_depth_begin = 5.0
+tonemap_mode = 3
+glow_enabled = true
+adjustment_color_correction = SubResource( 3 )

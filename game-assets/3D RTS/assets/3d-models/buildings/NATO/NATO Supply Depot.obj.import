@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/NATO Supply Depot.obj-6cbc47445dcf43e3d02972dc5e9c21bf.mesh"
+
+[deps]
+
+files=[ "res://.import/NATO Supply Depot.obj-6cbc47445dcf43e3d02972dc5e9c21bf.mesh" ]
+
+source_file="res://assets/3d-models/buildings/NATO/NATO Supply Depot.obj"
+dest_files=[ "res://.import/NATO Supply Depot.obj-6cbc47445dcf43e3d02972dc5e9c21bf.mesh", "res://.import/NATO Supply Depot.obj-6cbc47445dcf43e3d02972dc5e9c21bf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=1]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Supply Depot.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/data/building-data/NATO/NATOSupplyDepot.tres" type="Resource" id=3]
+[ext_resource path="res://assets/prefabs/buildings/NATO/NATOSupplyDepot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures-materials/BlueprintMaterial.tres" type="Material" id=5]
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( 3.99805, 2.03212, 3, 3.91803, 2.81788, 2.8879, 3.99805, 2.09456, -6, -0.941567, -0.0319432, 3.00526, 4.00178, -0.031594, -6.00526, -0.816593, 3.53501, -1.37669, -0.941567, -0.0319432, -6.00526, 4.00178, -0.031594, 3.00526, -0.758989, 2.9885, 2.96728, -2.31878, 0.969177, -0.624153, 1.71319, 3.34832, -5.83866, 3.81307, 3.53501, -1.37669, -0.758989, 2.9885, -5.96728, 1.71319, 3.34832, 2.83865, -2.16622, 0.0882279, -2.2, 3.70672, 2.9885, -5.96728, -1.34036, 1.90426, -5.86184, -2.25125, 0.0407102, -0.6, -0.946875, 2.81119, 2.86175, -2.31878, 0.969177, -1.37488, -1.29277, 0.0392669, -5.7653, 3.70672, 2.9885, 2.96728, -2.31878, 0.656305, -2.18817, -0.946875, 2.81119, -5.86175, 3.91803, 2.81788, -5.8879, -0.816593, 3.53501, -1.62421, 3.81307, 3.53501, -1.62421, 1.22743, 3.33186, 2.79394, 1.22743, 3.33186, -5.79394, 4, 2.09477, -4.62719 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 3.39956, 3, 4.8256 )
+
+[node name="NATOSupplyDepotBlueprint" type="Spatial"]
+script = ExtResource( 1 )
+building_to_instance = ExtResource( 4 )
+data = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = ExtResource( 5 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="KinematicBody" type="KinematicBody" parent="." groups=["building-blueprints"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+shape = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.883004, 2, -1.49227 )
+shape = SubResource( 3 )

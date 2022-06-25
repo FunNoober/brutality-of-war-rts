@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/prefabs/CameraPivot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/prefabs/units/PrototypeUnit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://assets/prefabs/buildings/Prototypes/EnemyPrototypeBuilding.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scripts/AStar.gd" type="Script" id=5]
+[ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=6]
+
+[sub_resource type="NavigationMesh" id=3]
+vertices = PoolVector3Array( -46.3, 0.5, -52.9, -52.9, 0.5, -52.9, -52.9, 0.5, -46.3, -52.9, 0.5, 46.1, -52.9, 0.5, 53, -46.3, 0.5, 53, 53, 0.5, -46.3, 53, 0.5, -52.9, 46.1, 0.5, -52.9, 46.1, 0.5, 53, 53, 0.5, 53, 53, 0.5, 46.1, -39.7, 0.5, -52.9, -46.3, 0.5, -52.9, -52.9, 0.5, -46.3, -52.9, 0.5, -39.7, -52.9, 0.5, 46.1, -46.3, 0.5, 53, -39.7, 0.5, 53, 53, 0.5, -39.7, 53, 0.5, -46.3, 46.1, 0.5, -52.9, 39.5, 0.5, -52.9, 39.5, 0.5, 53, 46.1, 0.5, 53, 53, 0.5, 46.1, -52.9, 0.5, 19.7, -52.9, 0.5, 26.3, -19.9, 0.5, 53, -13.3, 0.5, 53, -52.9, 0.5, 39.5, -52.9, 0.5, 46.1, -39.7, 0.5, 53, -33.1, 0.5, 53, 53, 0.5, -6.7, 53, 0.5, -13.3, 13.1, 0.5, -52.9, 6.5, 0.5, -52.9, 39.5, 0.5, 53, 53, 0.5, 46.1, 53, 0.5, 39.5, 32.9, 0.5, 53, -33.1, 0.5, -52.9, -39.7, 0.5, -52.9, -52.9, 0.5, -39.7, -52.9, 0.5, -33.1, 19.7, 0.5, 53, 53, 0.5, 26.3, 53, 0.5, 19.7, 13.1, 0.5, 53, 53, 0.5, -33.1, 53, 0.5, -39.7, 39.5, 0.5, -52.9, 32.9, 0.5, -52.9, -13.3, 0.5, -52.9, -19.9, 0.5, -52.9, -52.9, 0.5, -19.9, -52.9, 0.5, -13.3, -0.0999985, 0.5, -52.9, -6.7, 0.5, -52.9, -52.9, 0.5, -6.7, -52.9, 0.5, -0.0999985, -52.9, 0.5, 32.9, -52.9, 0.5, 39.5, -33.1, 0.5, 53, -26.5, 0.5, 53, 53, 0.5, -13.3, 53, 0.5, -19.9, 19.7, 0.5, -52.9, 13.1, 0.5, -52.9, 32.9, 0.5, 53, 53, 0.5, 39.5, 53, 0.5, 32.9, 26.3, 0.5, 53, -26.5, 0.5, -52.9, -33.1, 0.5, -52.9, -52.9, 0.5, -33.1, -52.9, 0.5, -26.5, -52.9, 0.5, -0.0999985, -52.9, 0.5, 6.5, -0.0999985, 0.5, 53, 53, 0.5, 6.5, 53, 0.5, -0.0999985, -0.0999985, 0.5, -52.9, 53, 0.5, -26.5, 53, 0.5, -33.1, 32.9, 0.5, -52.9, 26.3, 0.5, -52.9, -52.9, 0.5, 6.5, -52.9, 0.5, 13.1, -6.7, 0.5, 53, -0.0999985, 0.5, 53, -52.9, 0.5, 13.1, -52.9, 0.5, 19.7, -13.3, 0.5, 53, -6.7, 0.5, 53, -52.9, 0.5, 26.3, -52.9, 0.5, 32.9, -26.5, 0.5, 53, -19.9, 0.5, 53, 53, 0.5, -0.0999985, 53, 0.5, -6.7, 6.5, 0.5, -52.9, -0.0999985, 0.5, -52.9, 26.3, 0.5, 53, 53, 0.5, 32.9, 53, 0.5, 26.3, 19.7, 0.5, 53, -19.9, 0.5, -52.9, -26.5, 0.5, -52.9, -52.9, 0.5, -26.5, -52.9, 0.5, -19.9, 13.1, 0.5, 53, 53, 0.5, 19.7, 53, 0.5, 13.1, 6.5, 0.5, 53, 53, 0.5, -19.9, 53, 0.5, -26.5, 26.3, 0.5, -52.9, 19.7, 0.5, -52.9, -6.7, 0.5, -52.9, -13.3, 0.5, -52.9, -52.9, 0.5, -13.3, -52.9, 0.5, -6.7, 6.5, 0.5, 53, 53, 0.5, 13.1, 53, 0.5, 6.5, -0.0999985, 0.5, 53 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 18, 17, 16 ), PoolIntArray( 20, 19, 21 ), PoolIntArray( 21, 19, 22 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 27, 26, 28 ), PoolIntArray( 28, 26, 29 ), PoolIntArray( 31, 30, 32 ), PoolIntArray( 32, 30, 33 ), PoolIntArray( 35, 34, 36 ), PoolIntArray( 36, 34, 37 ), PoolIntArray( 39, 38, 40 ), PoolIntArray( 40, 38, 41 ), PoolIntArray( 43, 42, 44 ), PoolIntArray( 44, 42, 45 ), PoolIntArray( 47, 46, 48 ), PoolIntArray( 48, 46, 49 ), PoolIntArray( 51, 50, 52 ), PoolIntArray( 52, 50, 53 ), PoolIntArray( 55, 54, 56 ), PoolIntArray( 56, 54, 57 ), PoolIntArray( 59, 58, 60 ), PoolIntArray( 60, 58, 61 ), PoolIntArray( 63, 62, 64 ), PoolIntArray( 64, 62, 65 ), PoolIntArray( 67, 66, 68 ), PoolIntArray( 68, 66, 69 ), PoolIntArray( 71, 70, 72 ), PoolIntArray( 72, 70, 73 ), PoolIntArray( 75, 74, 76 ), PoolIntArray( 76, 74, 77 ), PoolIntArray( 79, 78, 80 ), PoolIntArray( 80, 78, 81 ), PoolIntArray( 81, 78, 82 ), PoolIntArray( 82, 78, 83 ), PoolIntArray( 85, 84, 86 ), PoolIntArray( 86, 84, 87 ), PoolIntArray( 89, 88, 90 ), PoolIntArray( 90, 88, 91 ), PoolIntArray( 93, 92, 94 ), PoolIntArray( 94, 92, 95 ), PoolIntArray( 97, 96, 98 ), PoolIntArray( 98, 96, 99 ), PoolIntArray( 101, 100, 102 ), PoolIntArray( 102, 100, 103 ), PoolIntArray( 105, 104, 106 ), PoolIntArray( 106, 104, 107 ), PoolIntArray( 109, 108, 110 ), PoolIntArray( 110, 108, 111 ), PoolIntArray( 113, 112, 114 ), PoolIntArray( 114, 112, 115 ), PoolIntArray( 117, 116, 118 ), PoolIntArray( 118, 116, 119 ), PoolIntArray( 121, 120, 122 ), PoolIntArray( 122, 120, 123 ), PoolIntArray( 125, 124, 126 ), PoolIntArray( 126, 124, 127 ) ]
+agent/radius = 2.0
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="TestGameScene" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="CameraPivot" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance" groups=["ground"]]
+transform = Transform( 55, 0, 0, 0, 0.1, 0, 0, 0, 55, 0, 0, 0 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance/StaticBody"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../../../..")
+material/0 = null
+
+[node name="KinematicBody" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8225, 0.0999981, -31.353 )
+
+[node name="KinematicBody4" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.4441, 0.0999981, -40.2513 )
+
+[node name="KinematicBody5" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7277, 0.0999981, -32.0574 )
+
+[node name="KinematicBody6" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8919, 0.0999981, -19.1185 )
+
+[node name="KinematicBody2" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8225, 0.0999981, -44.625 )
+
+[node name="KinematicBody3" parent="Navigation" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2557, 0.0999981, -44.625 )
+
+[node name="EnemyPrototypeBuilding" parent="Navigation" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.0961, 0.0999981, -35.183 )
+
+[node name="AStar" type="Spatial" parent="."]
+script = ExtResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.528768, -0.53357, 0.660081, -0.780463, -4.06883e-09, 0.625202, -0.333589, -0.845756, -0.416432, 0, 0, 0 )
+shadow_enabled = true
+
+[node name="NATOOutpost" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41182, 0.1, 21.8044 )

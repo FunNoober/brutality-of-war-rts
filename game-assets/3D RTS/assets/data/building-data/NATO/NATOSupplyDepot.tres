@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/DataScripts/buildings/BaseResourceStructure.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+faction = 0
+cost = 100
+health = 100
+resources_per_minute = 300
