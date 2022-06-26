@@ -14,13 +14,18 @@ enum STATE {
 	idle,
 	moving,
 	attack_move,
-	attacking
+	attacking,
+	dead
 }
 
 var state = STATE.idle
 
 var can_attack : bool = true
+var cur_health : int = 100
 export var projectile : PackedScene
+
+func _ready() -> void:
+	cur_health = data.health
 
 func attack_init(new_target):
 	target = new_target
@@ -32,6 +37,9 @@ func _process(delta: float) -> void:
 		$MeshInstance2.hide()
 
 func _physics_process(delta):
+	if cur_health <= 0:
+		state = STATE.dead
+	
 	match state:
 		STATE.moving:
 			do_moving()
@@ -39,6 +47,8 @@ func _physics_process(delta):
 			do_attack_moving()
 		STATE.attacking:
 			do_attacking()
+		STATE.dead:
+			queue_free()
  
 func do_attack_moving():
 	if path_ind < path.size():

@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("control"):
-		translation = (GlobalVars.global_mouse_pos / 1).floor() * 1
+		translation = (GlobalVars.global_mouse_pos / 1).round() * 1
 	else:
 		translation = GlobalVars.global_mouse_pos
 	

@@ -3,9 +3,9 @@
 [ext_resource path="res://assets/prefabs/CameraPivot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/prefabs/units/PrototypeUnit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://assets/prefabs/buildings/Prototypes/EnemyPrototypeBuilding.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/AStar.gd" type="Script" id=5]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/prefabs/buildings/WarsawPact/WarsawTurret.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationMesh" id=3]
 vertices = PoolVector3Array( -46.3, 0.5, -52.9, -52.9, 0.5, -52.9, -52.9, 0.5, -46.3, -52.9, 0.5, 46.1, -52.9, 0.5, 53, -46.3, 0.5, 53, 53, 0.5, -46.3, 53, 0.5, -52.9, 46.1, 0.5, -52.9, 46.1, 0.5, 53, 53, 0.5, 53, 53, 0.5, 46.1, -39.7, 0.5, -52.9, -46.3, 0.5, -52.9, -52.9, 0.5, -46.3, -52.9, 0.5, -39.7, -52.9, 0.5, 46.1, -46.3, 0.5, 53, -39.7, 0.5, 53, 53, 0.5, -39.7, 53, 0.5, -46.3, 46.1, 0.5, -52.9, 39.5, 0.5, -52.9, 39.5, 0.5, 53, 46.1, 0.5, 53, 53, 0.5, 46.1, -52.9, 0.5, 19.7, -52.9, 0.5, 26.3, -19.9, 0.5, 53, -13.3, 0.5, 53, -52.9, 0.5, 39.5, -52.9, 0.5, 46.1, -39.7, 0.5, 53, -33.1, 0.5, 53, 53, 0.5, -6.7, 53, 0.5, -13.3, 13.1, 0.5, -52.9, 6.5, 0.5, -52.9, 39.5, 0.5, 53, 53, 0.5, 46.1, 53, 0.5, 39.5, 32.9, 0.5, 53, -33.1, 0.5, -52.9, -39.7, 0.5, -52.9, -52.9, 0.5, -39.7, -52.9, 0.5, -33.1, 19.7, 0.5, 53, 53, 0.5, 26.3, 53, 0.5, 19.7, 13.1, 0.5, 53, 53, 0.5, -33.1, 53, 0.5, -39.7, 39.5, 0.5, -52.9, 32.9, 0.5, -52.9, -13.3, 0.5, -52.9, -19.9, 0.5, -52.9, -52.9, 0.5, -19.9, -52.9, 0.5, -13.3, -0.0999985, 0.5, -52.9, -6.7, 0.5, -52.9, -52.9, 0.5, -6.7, -52.9, 0.5, -0.0999985, -52.9, 0.5, 32.9, -52.9, 0.5, 39.5, -33.1, 0.5, 53, -26.5, 0.5, 53, 53, 0.5, -13.3, 53, 0.5, -19.9, 19.7, 0.5, -52.9, 13.1, 0.5, -52.9, 32.9, 0.5, 53, 53, 0.5, 39.5, 53, 0.5, 32.9, 26.3, 0.5, 53, -26.5, 0.5, -52.9, -33.1, 0.5, -52.9, -52.9, 0.5, -33.1, -52.9, 0.5, -26.5, -52.9, 0.5, -0.0999985, -52.9, 0.5, 6.5, -0.0999985, 0.5, 53, 53, 0.5, 6.5, 53, 0.5, -0.0999985, -0.0999985, 0.5, -52.9, 53, 0.5, -26.5, 53, 0.5, -33.1, 32.9, 0.5, -52.9, 26.3, 0.5, -52.9, -52.9, 0.5, 6.5, -52.9, 0.5, 13.1, -6.7, 0.5, 53, -0.0999985, 0.5, 53, -52.9, 0.5, 13.1, -52.9, 0.5, 19.7, -13.3, 0.5, 53, -6.7, 0.5, 53, -52.9, 0.5, 26.3, -52.9, 0.5, 32.9, -26.5, 0.5, 53, -19.9, 0.5, 53, 53, 0.5, -0.0999985, 53, 0.5, -6.7, 6.5, 0.5, -52.9, -0.0999985, 0.5, -52.9, 26.3, 0.5, 53, 53, 0.5, 32.9, 53, 0.5, 26.3, 19.7, 0.5, 53, -19.9, 0.5, -52.9, -26.5, 0.5, -52.9, -52.9, 0.5, -26.5, -52.9, 0.5, -19.9, 13.1, 0.5, 53, 53, 0.5, 19.7, 53, 0.5, 13.1, 6.5, 0.5, 53, 53, 0.5, -19.9, 53, 0.5, -26.5, 26.3, 0.5, -52.9, 19.7, 0.5, -52.9, -6.7, 0.5, -52.9, -13.3, 0.5, -52.9, -52.9, 0.5, -13.3, -52.9, 0.5, -6.7, 6.5, 0.5, 53, 53, 0.5, 13.1, 53, 0.5, 6.5, -0.0999985, 0.5, 53 )
@@ -21,7 +21,7 @@ data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1
 script = ExtResource( 3 )
 
 [node name="CameraPivot" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.29656, 14 )
 
 [node name="Navigation" type="Navigation" parent="."]
 
@@ -59,8 +59,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8225, 0.0999981, -44.625 )
 [node name="KinematicBody3" parent="Navigation" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2557, 0.0999981, -44.625 )
 
-[node name="EnemyPrototypeBuilding" parent="Navigation" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.0961, 0.0999981, -35.183 )
+[node name="NATOOutpost" parent="Navigation" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41182, 0.1, 21.8044 )
 
 [node name="AStar" type="Spatial" parent="."]
 script = ExtResource( 5 )
@@ -69,5 +69,5 @@ script = ExtResource( 5 )
 transform = Transform( 0.528768, -0.53357, 0.660081, -0.780463, -4.06883e-09, 0.625202, -0.333589, -0.845756, -0.416432, 0, 0, 0 )
 shadow_enabled = true
 
-[node name="NATOOutpost" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.41182, 0.1, 21.8044 )
+[node name="Warsaw Turret" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.708845, 0, -0.705364, 0, 1, 0, 0.705364, 0, 0.708845, -43.3743, 0.099999, -39.1142 )

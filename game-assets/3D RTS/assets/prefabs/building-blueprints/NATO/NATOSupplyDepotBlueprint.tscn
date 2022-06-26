@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=1]
-[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Supply Depot.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Supply Depot/NATO Supply Depot.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/data/building-data/NATO/NATOSupplyDepot.tres" type="Resource" id=3]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOSupplyDepot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/textures-materials/BlueprintMaterial.tres" type="Material" id=5]

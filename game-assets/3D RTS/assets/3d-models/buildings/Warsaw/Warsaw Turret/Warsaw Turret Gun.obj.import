@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Warsaw Turret Gun.obj-4952f784b5183265424ad8ebd5c3db32.mesh"
+
+[deps]
+
+files=[ "res://.import/Warsaw Turret Gun.obj-4952f784b5183265424ad8ebd5c3db32.mesh" ]
+
+source_file="res://assets/3d-models/buildings/Warsaw/Warsaw Turret/Warsaw Turret Gun.obj"
+dest_files=[ "res://.import/Warsaw Turret Gun.obj-4952f784b5183265424ad8ebd5c3db32.mesh", "res://.import/Warsaw Turret Gun.obj-4952f784b5183265424ad8ebd5c3db32.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

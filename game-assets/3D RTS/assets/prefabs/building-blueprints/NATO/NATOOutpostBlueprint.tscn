@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/textures-materials/BlueprintMaterial.tres" type="Material" id=1]
-[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Outpost.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Outpost/NATO Outpost.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=3]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/data/building-data/NATO/NATOSupplyDepot.tres" type="Resource" id=5]
+[ext_resource path="res://assets/data/building-data/NATO/NATOOutpost.tres" type="Resource" id=5]
 
 [sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( -0.593391, -0.494738, 4.60451, -6.0727, 1.7839, -2.64615, -8.99654, -0.494353, 2.6388, -2.49139, 3.09657, 4.26532, 0.916601, 2.12469, -1.96952, 1.03389, -0.834093, -2.03753, 0.846489, 2.11067, 1.98649, -6.75555, 2.18727, -1.89361, -9.04333, -0.798707, -2.58455, -2.62675, -0.833323, 4.60451, -6.85589, 2.11036, 1.98685, 0.907958, -0.785409, 2, -0.796194, 3.05666, 4.19719, -3.30453, -0.834093, -2.78389, -0.728749, 3.09657, 2.97726, -9.04668, -0.8, 2.00922, -9.02395, -0.59208, -2.57098, 0.113528, 1.782, -2.17898, -2.49139, 3.09657, 2.97726, -6.87255, 2.11618, -1.94484, -0.652022, -0.8, 4.54184, 0.742082, 2.18179, -1.87906, -6.76114, -0.834093, -2.03753, -3.35835, 1.76025, -2.51723, -2.62675, -0.494738, 4.60451, 0.209244, -0.664916, -2.25, -6.70976, 2.1694, 1.91543, -8.69452, -0.663538, 2.48942 )

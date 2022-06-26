@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 				for unit in selected_units:
 					unit.selected = false
 				selected_units.clear()
-				if selected_building != null:
+				if selected_building != null and is_instance_valid(selected_building):
 					selected_building.selected = false
 
 func mouse_ray(collision_mask):
