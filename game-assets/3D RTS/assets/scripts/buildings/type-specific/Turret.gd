@@ -34,7 +34,7 @@ func shoot():
 		get_tree().get_root().add_child(p)
 		p.rotation = get_node(muzzle).global_transform.basis.get_euler()
 		p.translation = get_node(muzzle).global_transform.origin
-		p.set_direction(15, 10)
+		p.set_direction(50, 10)
 		$ShootDelay.start()
 
 func _on_Vision_body_entered(body: Node) -> void:
@@ -43,3 +43,7 @@ func _on_Vision_body_entered(body: Node) -> void:
 
 func _on_ShootDelay_timeout() -> void:
 	can_shoot = true
+
+func _on_Vision_body_exited(body: Node) -> void:
+	if body.is_in_group("units"):
+		targets.erase(body)

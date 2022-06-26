@@ -90,7 +90,7 @@ func attack():
 		$ShootTimer.start()
 
 func move_to(target_pos):
-	path = get_node(GlobalVars.active_navigation).find_path(translation, target_pos)
+	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)
 	path_ind = 0
 
 

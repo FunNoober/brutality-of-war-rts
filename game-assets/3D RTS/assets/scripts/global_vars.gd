@@ -8,6 +8,7 @@ var active_scene : NodePath
 var active_navigation : NodePath
 
 var current_money : int = 500
+var current_power : int = 10
 
 enum STATES {
 	normal,

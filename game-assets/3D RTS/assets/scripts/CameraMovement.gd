@@ -33,52 +33,64 @@ func _process(delta: float) -> void:
 			if is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
 				selected_units.append(get_node(GlobalVars.global_item_selected))
 				get_node(GlobalVars.global_item_selected).selected = true
+				if selected_building != null:
+					selected_building.selected = false
 			if !is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
 				for unit in selected_units:
-					unit.selected = false
+					if is_instance_valid(unit):
+						unit.selected = false
 				selected_units.clear()
 				selected_units.append(get_node(GlobalVars.global_item_selected))
 				get_node(GlobalVars.global_item_selected).selected = true
+				if selected_building != null:
+					selected_building.selected = false
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
 			if Input.is_action_just_pressed("confirm_build"):
 				if selected_building != null:
 					selected_building.selected = false
 				selected_building = get_node(GlobalVars.global_item_selected).get_parent()
 				selected_building.selected = true
+				for unit in selected_units:
+					if is_instance_valid(unit):
+						unit.selected = false
+				selected_units.clear()
 	
 	if GlobalVars.cur_state == GlobalVars.STATES.sell_mode and Input.is_action_just_pressed("confirm_build"):
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
 			var building_selected = get_node(GlobalVars.global_item_selected).get_parent()
 			if building_selected.data.faction == building_selected.data.FACTIONS.NATO:
 				building_selected.queue_free()
-				GlobalVars.current_money += building_selected.data.cost / 2
+				GlobalVars.current_money += building_selected.data.cost / 2	
 	
 	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0:
 		match get_node(GlobalVars.global_item_selected).get_groups()[0]:
 			"ground":
 				var angle = stepify(rand_range(0, 12), 0)
 				for unit in selected_units:
-					if selected_units.size() >= 2:
-						unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
-						unit.state = unit.STATE.moving
-						angle += 2.0*PI / 12
-					else:
-						unit.move_to(GlobalVars.global_mouse_pos)
-						unit.state = unit.STATE.moving
+					if is_instance_valid(unit):
+						if selected_units.size() >= 2:
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
+							unit.state = unit.STATE.moving
+							angle += 2.0*PI / 12
+						else:
+							unit.move_to(GlobalVars.global_mouse_pos)
+							unit.state = unit.STATE.moving
 			"buildings":
 				var angle = stepify(rand_range(0, 12), 0)
 				for unit in selected_units:
-					if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
-						unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
-						unit.state = unit.STATE.attack_move
-						unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
-						angle += 2.0*PI / 12
+					if is_instance_valid(unit):
+						if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
+							unit.state = unit.STATE.attack_move
+							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
+							angle += 2.0*PI / 12
 			
 	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
 		if GlobalVars.global_item_selected != "":
 			if get_node(GlobalVars.global_item_selected).is_in_group("ground"):
 				for unit in selected_units:
-					unit.selected = false
+					if is_instance_valid(unit):
+						unit.selected = false
 				selected_units.clear()
 				if selected_building != null and is_instance_valid(selected_building):
 					selected_building.selected = false
