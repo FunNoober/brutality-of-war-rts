@@ -38,7 +38,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3D RTS"
+config/name="Brutality of War"
 run/main_scene="res://scenes/TestGameScene.tscn"
 config/icon="res://icon.png"
 

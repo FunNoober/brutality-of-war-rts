@@ -10,3 +10,9 @@ func _ready() -> void:
 	
 func button_pressed():
 	emit_signal("build_pressed", unit_to_spawn, unit_data)
+
+func _on_Button_mouse_entered() -> void:
+	GlobalVars.mouse_hovering_ui = true
+
+func _on_Button_mouse_exited() -> void:
+	GlobalVars.mouse_hovering_ui = false

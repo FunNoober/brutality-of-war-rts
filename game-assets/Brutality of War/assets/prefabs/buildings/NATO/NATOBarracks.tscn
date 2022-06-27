@@ -35,7 +35,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 10.5 )
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+margin_left = 954.0
 
 [node name="Toolbar" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_left = 1.0
@@ -53,4 +53,6 @@ unit_data = ExtResource( 6 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[connection signal="mouse_entered" from="CanvasLayer/Control/Toolbar/RiflemanButton" to="CanvasLayer/Control/Toolbar/RiflemanButton" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/Toolbar/RiflemanButton" to="CanvasLayer/Control/Toolbar/RiflemanButton" method="_on_Button_mouse_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

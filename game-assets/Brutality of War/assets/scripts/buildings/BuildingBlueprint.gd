@@ -13,7 +13,8 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("control"):
-		translation = (GlobalVars.global_mouse_pos / 1).round() * 1
+		translation.x = round((GlobalVars.global_mouse_pos.x / 1)) * 1
+		translation.z = round((GlobalVars.global_mouse_pos.z / 1)) * 1
 	else:
 		translation = GlobalVars.global_mouse_pos
 	
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 		rotation_degrees.y += 45
 	
 	if Input.is_action_pressed("confirm_build") and can_build == true and data.cost <= GlobalVars.current_money and is_in_territory:
-		var b = building_to_instance.instance()
+		var b : Spatial = building_to_instance.instance()
 		get_parent().add_child(b)
 		b.transform = transform
 		GlobalVars.cur_state = GlobalVars.STATES.normal

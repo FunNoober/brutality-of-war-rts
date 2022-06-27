@@ -25,8 +25,11 @@ albedo_color = Color( 1, 0, 0, 1 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
-data = ExtResource( 2 )
 projectile = ExtResource( 3 )
+data = ExtResource( 2 )
+selected_marker = NodePath("MeshInstance2")
+muzzle = NodePath("MeshInstance3/Muzzle")
+shoot_timer = NodePath("ShootTimer")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

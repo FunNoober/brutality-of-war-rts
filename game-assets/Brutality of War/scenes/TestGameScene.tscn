@@ -43,13 +43,13 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4118, 0.474361, 207.804 )
 
 [node name="Warsaw Turret" parent="Navigation" instance=ExtResource( 7 )]
-transform = Transform( 0.708845, 0, -0.705364, 0, 1, 0, 0.705364, 0, 0.708845, -22.3743, 0.47436, 147.886 )
+transform = Transform( 0.708845, 0, -0.705364, 0, 1, 0, 0.705364, 0, 0.708845, -43.8412, 0.47436, 103.2 )
 
 [node name="Warsaw Turret2" parent="Navigation" instance=ExtResource( 7 )]
-transform = Transform( 0.00246146, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.00246146, -27.3743, 0.47436, 152.356 )
+transform = Transform( 0.00246146, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.00246146, -48.8412, 0.47436, 107.67 )
 
 [node name="Warsaw Turret3" parent="Navigation" instance=ExtResource( 7 )]
-transform = Transform( 0.999997, 0, 0.00246151, 0, 1, 0, -0.00246151, 0, 0.999997, -23.3743, 0.47436, 140.356 )
+transform = Transform( 0.999997, 0, 0.00246151, 0, 1, 0, -0.00246151, 0, 0.999997, -44.8412, 0.47436, 95.6697 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.528768, -0.53357, 0.660081, -0.780463, -4.06883e-09, 0.625202, -0.333589, -0.845756, -0.416432, 0, 0, 0 )

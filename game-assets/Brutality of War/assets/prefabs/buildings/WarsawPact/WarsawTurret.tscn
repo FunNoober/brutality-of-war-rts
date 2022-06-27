@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/3d-models/buildings/Warsaw/Warsaw Turret/Warsaw Turret Base.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/3d-models/buildings/Warsaw/Warsaw Turret/Warsaw Turret Gun.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/scripts/buildings/type-specific/Turret.gd" type="Script" id=3]
+[ext_resource path="res://assets/data/building-data/WarsawPact/WarsawTurret.tres" type="Resource" id=4]
+[ext_resource path="res://assets/prefabs/projectiles/WarsawBullet.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SphereShape" id=2]
+radius = 30.0
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( 0.275484, 0.507392, 0.531321, -0.437567, 0.00969629, -0.636598, -0.500596, 0.00609719, -0.62079, -0.118192, 1.07855, -0.275507, 0.618821, 0.0722505, -0.536221, -0.53864, 0.00807601, 0.598474, 0.598472, 0.00800381, 0.538672, 0.393515, 0.979888, 0.275466, -0.393503, 0.979875, 0.275458, 0.275547, 0.979965, -0.393471, -0.618821, 0.0722505, -0.536221, -0.313126, 0.977366, -0.371617, -0.177263, 1, 0.413741, 0.437567, 0.00969708, -0.636597, -0.636573, 0.00971678, 0.437638, 0.413777, 1, -0.177155, -0.413777, 1, -0.177155, 0.642334, 0.00485628, 0.421479, 0.536346, 0.0723596, 0.618908, -0.536346, 0.0723596, 0.618908, -0.177263, 1, -0.413539, 0.118187, 1.07853, 0.275573, 0.275445, 0.979805, 0.393528, -0.275623, 1.07856, 0.118045, 0.495238, 0.0516358, -0.639635, -0.495238, 0.0516358, -0.639635, 0.275636, 1.07859, -0.117972, 0.62087, 0.0058081, -0.500618, -0.531221, 0.507818, 0.27538, 0.413777, 1, 0.177234, 0.4376, 0.00965626, 0.636601, 0.177263, 1, -0.413539, 0.618821, 0.0723596, 0.536435, -0.636631, 0.00966806, -0.437473, -0.618951, 0.0723596, 0.536435, 0.629271, 0.0749186, -0.392995, -0.393197, 0.0750648, 0.629171, -0.313098, 0.977327, 0.371662, 0.393959, 0.960272, -0.295451, -0.629268, 0.0749204, -0.392994, -0.413777, 1, 0.177234, 0.177263, 1, 0.413741, -0.393962, 0.960275, -0.295453, -0.500633, 0.00605739, 0.620792, 0.531221, 0.507818, 0.27538, -0.275636, 1.07859, -0.117972, -0.118187, 1.07853, 0.275573, 0.118192, 1.07855, -0.275507, 0.275623, 1.07856, 0.118045, 0.536476, 0.0722505, -0.618952, 0.313098, 0.977327, 0.371662, -0.629213, 0.0749615, 0.393161, 0.393098, 0.0750368, 0.629208, -0.536476, 0.0722505, -0.618952, -0.620869, 0.00580858, -0.500617, 0.313126, 0.977366, -0.371617, -0.275607, 0.507392, 0.531321, -0.531221, 0.507818, -0.275301, 0.531221, 0.507818, -0.275301, -0.295497, 0.960354, -0.393923, -0.295398, 0.960216, 0.393994, 0.629211, 0.0749633, 0.39316, -0.437599, 0.00965705, 0.6366, 0.500633, 0.00605689, 0.620792 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 0.222537, 1.08358, 0.0128045, -0.271284, 2.30784, 0.13125, -0.271284, 2.30784, -0.13515, 0.943338, 1.77469, 0.0720787, -0.0850039, 1.0979, 0.195728, 0.0151561, 1.45891, -0.263637, -0.390085, 1.69571, -0.16013, 0.943338, 1.74509, -0.0660911, -0.132897, 1.94234, 0.259737, 0.0940827, 1.08358, -0.204363, -0.395157, 1.69571, 0.157501, -0.132897, 1.94234, -0.263637, -0.201229, 1.09725, -0.0646715, 0.113947, 1.08358, 0.190576, 0.0151561, 1.45891, 0.259737, -0.377837, 2.26872, 0.1269, 0.902243, 1.84406, -0.025095, -0.0817893, 1.10336, -0.197822, -0.358322, 2.25138, -0.1269, -0.192435, 1.09622, 0.0899356, 0.943338, 1.72531, 0.0424672, -0.156095, 1.6387, 0.250047, -0.147482, 1.63859, -0.254449, 0.202673, 1.08358, -0.0957538, -0.390708, 1.87804, -0.16028, 0.192873, 1.08358, 0.111578, 0.87938, 1.82972, -0.0510738, -0.211603, 1.09642, 0.0125481, 0.943338, 1.71549, -0.00681693, 0.894699, 1.8423, 0.0300968, -0.151616, 1.0993, -0.151077, -0.393475, 1.8788, 0.157096, 0.0151561, 1.50829, -0.263637, 0.15341, 1.08358, -0.164864, 0.0151561, 1.50829, 0.259737, -0.0129488, 1.10746, 0.211523, -0.160744, 1.09989, 0.137404, 0.173142, 1.08358, 0.141189, 0.943338, 1.74509, 0.0621911, -0.255427, 1.90646, 0.213642, 0.222537, 1.08358, -0.0167045, 0.212605, 1.08358, 0.0621911, -0.041315, 1.10773, -0.205877, 0.943338, 1.71549, 0.0128045, -0.190138, 1.09922, -0.0933761, 0.943338, 1.72531, -0.0364284, 0.143478, 1.08358, 0.170852, -0.130226, 1.10253, 0.165536, -0.210831, 1.09738, -0.0164247, 0.212605, 1.08358, -0.0660911, -0.352008, 1.88764, 0.175545, -0.201985, 1.09628, 0.0608728, -0.350939, 1.6863, 0.175238, 0.202673, 1.08358, 0.0918538 )
+
+[node name="Warsaw Turret" type="Spatial"]
+script = ExtResource( 3 )
+data = ExtResource( 4 )
+enemy_pos_flat = NodePath("EnemyPositionFlat")
+enemy_position_3d = NodePath("EnemyPosition3D")
+turret_gun = NodePath("Warsaw Turret Gun")
+muzzle = NodePath("Warsaw Turret Gun/Muzzle")
+projectile = ExtResource( 5 )
+
+[node name="Vision" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Vision"]
+shape = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="." groups=["buildings"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Warsaw Turret Base" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Warsaw Turret Gun" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="Muzzle" type="Position3D" parent="Warsaw Turret Gun"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.16022, 1.80356, 0 )
+
+[node name="EnemyPositionFlat" type="Position3D" parent="."]
+
+[node name="EnemyPosition3D" type="Position3D" parent="."]
+
+[node name="ShootDelay" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="Vision" to="." method="_on_Vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_Vision_body_exited"]
+[connection signal="timeout" from="ShootDelay" to="." method="_on_ShootDelay_timeout"]

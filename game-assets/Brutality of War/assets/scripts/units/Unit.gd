@@ -1,14 +1,5 @@
 extends KinematicBody
 class_name Unit
- 
-export var data : Resource
-
-var selected : bool
-var path = []
-var path_ind = 0
-const move_speed = 12
-
-var target
 
 enum STATE {
 	idle,
@@ -18,11 +9,21 @@ enum STATE {
 	dead
 }
 
-var state = STATE.idle
+var move_speed : float = 6.0
 
+var state = STATE.idle
 var can_attack : bool = true
 var cur_health : int = 100
+var selected : bool
+var path = []
+var path_ind : int = 0
+var target : Vector3
+
 export var projectile : PackedScene
+export var data : Resource
+export var selected_marker : NodePath
+export var muzzle : NodePath
+export var shoot_timer : NodePath
 
 func _ready() -> void:
 	cur_health = data.health
@@ -31,15 +32,14 @@ func attack_init(new_target):
 	target = new_target
 	
 func _process(delta: float) -> void:
-	if selected == true and $MeshInstance2.is_visible_in_tree() == false:
-		$MeshInstance2.show()
-	if selected == false and $MeshInstance2.is_visible_in_tree() == true:
-		$MeshInstance2.hide()
+	if selected == true and get_node(selected_marker).is_visible_in_tree() == false:
+		get_node(selected_marker).show()
+	if selected == false and get_node(selected_marker).is_visible_in_tree() == true:
+		get_node(selected_marker).hide()
 
 func _physics_process(delta):
 	if cur_health <= 0:
 		state = STATE.dead
-	
 	match state:
 		STATE.moving:
 			do_moving()
@@ -60,7 +60,7 @@ func do_attack_moving():
 		else:
 			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
 			look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
-
+			
 func do_moving():
 	if path_ind < path.size():
 		var move_vec = (path[path_ind] - global_transform.origin)
@@ -84,10 +84,10 @@ func attack():
 		can_attack = false
 		var p : RigidBody = projectile.instance()
 		get_tree().get_root().add_child(p)
-		p.rotation = $MeshInstance3/Muzzle.global_transform.basis.get_euler()
-		p.translation = $MeshInstance3/Muzzle.global_transform.origin
+		p.rotation = get_node(muzzle).global_transform.basis.get_euler()
+		p.translation = get_node(muzzle).global_transform.origin
 		p.set_direction(25, data.damage)
-		$ShootTimer.start()
+		get_node(shoot_timer).start()
 
 func move_to(target_pos):
 	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)

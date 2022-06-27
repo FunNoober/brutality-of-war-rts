@@ -2,7 +2,7 @@ extends Position3D
 
 export var move_speed : float = 50
 var selected_units = []
-var selected_building
+var selected_building : Spatial
 var is_holding_modifier : bool
 
 func input(delta):
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	is_holding_modifier = Input.is_action_pressed("modifier")
 	
 	if GlobalVars.cur_state == GlobalVars.STATES.normal:
-		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("units"):
+		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("units") and GlobalVars.mouse_hovering_ui == false:
 			if is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
 				selected_units.append(get_node(GlobalVars.global_item_selected))
 				get_node(GlobalVars.global_item_selected).selected = true
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 				get_node(GlobalVars.global_item_selected).selected = true
 				if selected_building != null:
 					selected_building.selected = false
-		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
+		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings") and GlobalVars.mouse_hovering_ui == false:
 			if Input.is_action_just_pressed("confirm_build"):
 				if selected_building != null:
 					selected_building.selected = false
@@ -55,14 +55,14 @@ func _process(delta: float) -> void:
 						unit.selected = false
 				selected_units.clear()
 	
-	if GlobalVars.cur_state == GlobalVars.STATES.sell_mode and Input.is_action_just_pressed("confirm_build"):
+	if GlobalVars.cur_state == GlobalVars.STATES.sell_mode and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
 			var building_selected = get_node(GlobalVars.global_item_selected).get_parent()
 			if building_selected.data.faction == building_selected.data.FACTIONS.NATO:
 				building_selected.queue_free()
 				GlobalVars.current_money += building_selected.data.cost / 2	
 	
-	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0:
+	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0 and GlobalVars.mouse_hovering_ui == false:
 		match get_node(GlobalVars.global_item_selected).get_groups()[0]:
 			"ground":
 				var angle = stepify(rand_range(0, 12), 0)
@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
 							angle += 2.0*PI / 12
 			
-	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
+	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:
 		if GlobalVars.global_item_selected != "":
 			if get_node(GlobalVars.global_item_selected).is_in_group("ground"):
 				for unit in selected_units:

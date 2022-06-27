@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 faction = 0
 cost = 100
 health = 100
-damage = 5
+damage = 10

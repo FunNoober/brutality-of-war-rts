@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 faction = 0
 cost = 250
 health = 100
-resources_per_minute = 300
+resources_per_minute = 1500
