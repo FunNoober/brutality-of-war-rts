@@ -16,7 +16,10 @@ func _process(delta: float) -> void:
 		$CanvasLayer/Control.show()
 	
 	if queue.size() > 0 and is_constructing == false:
-		$SpawnTimer.start(queue_data[0].cost / 60)
+		if has_power:
+			$SpawnTimer.start(queue_data[0].cost / 60)
+		else:
+			$SpawnTimer.start(queue_data[0].cost / 60 * 2)
 		is_constructing = true
 		
 func add_unit_to_queue(to_spawn, u_data):

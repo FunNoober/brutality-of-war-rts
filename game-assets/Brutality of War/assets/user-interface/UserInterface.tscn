@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scripts/user-interface/BuildButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOSupplyDepotBlueprint.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/scripts/user-interface/SellModeButton.gd" type="Script" id=4]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOOutpostBlueprint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOBarracksBlueprint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOPowerPlantBlueprint.tscn" type="PackedScene" id=7]
 
 [node name="UserInterface" type="CanvasLayer"]
 
@@ -57,7 +58,12 @@ text = "Barracks"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 6 )
 
+[node name="PowerPlantButton" type="Button" parent="Control/Buttons"]
+margin_top = 116.0
+margin_right = 143.0
+margin_bottom = 136.0
+text = "Power Plant"
+script = ExtResource( 1 )
+building_blueprint = ExtResource( 7 )
+
 [connection signal="toggled" from="Control/Buttons/SellModeButton" to="Control/Buttons/SellModeButton" method="_on_SellModeButton_toggled"]
-[connection signal="pressed" from="Control/Buttons/BuildButton" to="Control/Buttons/BuildButton" method="_on_BuildButton_pressed"]
-[connection signal="pressed" from="Control/Buttons/OutpostButton" to="Control/Buttons/OutpostButton" method="_on_BuildButton_pressed"]
-[connection signal="pressed" from="Control/Buttons/BarracksButton" to="Control/Buttons/BarracksButton" method="_on_BuildButton_pressed"]

@@ -24,9 +24,11 @@ export var data : Resource
 export var selected_marker : NodePath
 export var muzzle : NodePath
 export var shoot_timer : NodePath
+export var vision : NodePath
 
 func _ready() -> void:
 	cur_health = data.health
+	get_node(vision).connect("body_entered", self, "vision_entered")
 
 func attack_init(new_target):
 	target = new_target
@@ -93,6 +95,11 @@ func move_to(target_pos):
 	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)
 	path_ind = 0
 
-
 func _on_ShootTimer_timeout() -> void:
 	can_attack = true
+
+func vision_entered(body: Node) -> void:
+	if body.is_in_group("units") and body.data.faction != data.faction:
+		if state == STATE.idle:
+			move_to(body.global_transform.origin)
+			state = STATE.attack_move
