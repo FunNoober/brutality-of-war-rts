@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://assets/scripts/DataScripts/units/BaseProjectileLauncherData.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/DataScripts/units/UnitData.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
@@ -8,3 +8,4 @@ faction = 0
 cost = 100
 health = 100
 damage = 10
+attack_range = 20.0

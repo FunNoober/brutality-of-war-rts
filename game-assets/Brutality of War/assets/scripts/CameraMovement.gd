@@ -59,28 +59,27 @@ func _process(delta: float) -> void:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
 			var building_selected = get_node(GlobalVars.global_item_selected).get_parent()
 			if building_selected.data.faction == building_selected.data.FACTIONS.NATO:
-				building_selected.queue_free()
-				GlobalVars.current_money += building_selected.data.cost / 2	
+				building_selected.cur_state = building_selected.STATES.sell
 	
 	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0 and GlobalVars.mouse_hovering_ui == false:
 		match get_node(GlobalVars.global_item_selected).get_groups()[0]:
 			"ground":
-				var angle = stepify(rand_range(0, 12), 0)
+				var angle = 0
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						if selected_units.size() >= 2:
-							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.moving
 							angle += 2.0*PI / 12
 						else:
 							unit.move_to(GlobalVars.global_mouse_pos)
 							unit.state = unit.STATE.moving
 			"buildings":
-				var angle = stepify(rand_range(0, 12), 0)
+				var angle = 0
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
-							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * 10)
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.attack_move
 							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
 							angle += 2.0*PI / 12

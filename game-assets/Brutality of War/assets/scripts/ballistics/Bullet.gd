@@ -3,6 +3,9 @@ extends RigidBody
 var damage : int = 10
 export var data : Resource
 
+func _ready() -> void:
+	connect("body_entered", self, "_on_Bullet_body_entered")
+
 func _process(delta: float) -> void:
 	if $RayCast.is_colliding() and $RayCast.get_collider() != null:
 		if $RayCast.get_collider().is_in_group("buildings"):
@@ -14,7 +17,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func set_direction(force, dmg):
-	apply_impulse(global_transform.origin, global_transform.basis.z.normalized() * force)
+	apply_impulse(global_transform.origin, global_transform.basis.z * force)
 	damage = dmg
 
 func _on_Bullet_body_entered(body: Node) -> void:

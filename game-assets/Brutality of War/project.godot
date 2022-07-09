@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "projectile_launcher_entity_data",
 "language": "GDScript",
 "path": "res://assets/scripts/DataScripts/units/BaseProjectileLauncherData.gd"
+}, {
+"base": "Resource",
+"class": "unit_data",
+"language": "GDScript",
+"path": "res://assets/scripts/DataScripts/units/UnitData.gd"
 } ]
 _global_script_class_icons={
 "Unit": "",
 "entity_data": "",
 "gather_entity_data": "",
-"projectile_launcher_entity_data": ""
+"projectile_launcher_entity_data": "",
+"unit_data": ""
 }
 
 [application]
