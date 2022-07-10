@@ -32,7 +32,8 @@ func _process(delta: float) -> void:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("units") and GlobalVars.mouse_hovering_ui == false:
 			if is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
 				selected_units.append(get_node(GlobalVars.global_item_selected))
-				get_node(GlobalVars.global_item_selected).selected = true
+				if get_node(GlobalVars.global_item_selected).data.faction == GlobalVars.player_faction:
+					get_node(GlobalVars.global_item_selected).selected = true
 				if selected_building != null:
 					selected_building.selected = false
 			if !is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
@@ -41,15 +42,18 @@ func _process(delta: float) -> void:
 						unit.selected = false
 				selected_units.clear()
 				selected_units.append(get_node(GlobalVars.global_item_selected))
-				get_node(GlobalVars.global_item_selected).selected = true
+				if get_node(GlobalVars.global_item_selected).data.faction == GlobalVars.player_faction:
+					get_node(GlobalVars.global_item_selected).selected = true
 				if selected_building != null:
-					selected_building.selected = false
+					if is_instance_valid(selected_building):
+						selected_building.selected = false
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings") and GlobalVars.mouse_hovering_ui == false:
 			if Input.is_action_just_pressed("confirm_build"):
 				if selected_building != null:
 					selected_building.selected = false
 				selected_building = get_node(GlobalVars.global_item_selected).get_parent()
-				selected_building.selected = true
+				if selected_building.data.faction == GlobalVars.player_faction:
+					selected_building.selected = true
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						unit.selected = false
@@ -58,7 +62,7 @@ func _process(delta: float) -> void:
 	if GlobalVars.cur_state == GlobalVars.STATES.sell_mode and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings"):
 			var building_selected = get_node(GlobalVars.global_item_selected).get_parent()
-			if building_selected.data.faction == building_selected.data.FACTIONS.NATO:
+			if building_selected.data.faction == GlobalVars.player_faction:
 				building_selected.cur_state = building_selected.STATES.sell
 	
 	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0 and GlobalVars.mouse_hovering_ui == false:

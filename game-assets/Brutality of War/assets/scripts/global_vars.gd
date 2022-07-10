@@ -12,6 +12,8 @@ var active_navigation : NodePath
 var current_money : int = 500
 var current_power : int = 10
 
+var player_faction : int = 0
+
 enum STATES {
 	normal,
 	build_mode,
