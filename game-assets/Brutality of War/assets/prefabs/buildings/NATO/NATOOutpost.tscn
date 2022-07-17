@@ -12,7 +12,7 @@ data = PoolVector3Array( 1, 1.8583, 2, -6.6407, 1.8583, 2, 0.9505, 1.8583, 1.901
 [sub_resource type="SphereMesh" id=6]
 
 [sub_resource type="SphereShape" id=4]
-radius = 25.1178
+radius = 59.0
 
 [node name="NATOOutpost" type="Spatial"]
 script = ExtResource( 4 )
@@ -33,7 +33,7 @@ mesh = ExtResource( 2 )
 material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 25.2734, 0, 0, 0, 25.2734, 0, 0, 0, 25.2734, -3, 0, 0 )
+transform = Transform( 58.7365, 0, 0, 0, 61.1616, 0, 0, 0, 61.1616, -3, 0, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
