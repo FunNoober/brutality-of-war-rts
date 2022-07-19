@@ -4,6 +4,7 @@ export var move_speed : float = 50
 var selected_units = []
 var selected_building : Spatial
 var is_holding_modifier : bool
+var is_rotation_camera: bool
 
 func input(delta):
 	var mov_x = calcute_movement("move_left", "move_right", delta)
@@ -11,6 +12,11 @@ func input(delta):
 	var mov_z = calcute_movement("move_up", "move_down", delta)
 	global_translate(get_global_transform().basis.z.normalized() * -mov_z)
 	rotation.y -= calcute_movement("rotate_left", "rotate_right", delta) * 0.1
+	
+func _input(event: InputEvent) -> void:
+	if is_rotation_camera:
+		if event is InputEventMouseMotion:
+			self.rotate_y(deg2rad(event.relative.x * -1))
 	
 func calcute_movement(action_one : String, action_two : String, delta : float):
 	var mov = (Input.get_action_strength(action_one) - Input.get_action_strength(action_two)) * delta * move_speed
@@ -27,6 +33,7 @@ func _process(delta: float) -> void:
 		GlobalVars.STATES.normal:
 			mouse_ray(2)
 	is_holding_modifier = Input.is_action_pressed("modifier")
+	is_rotation_camera = Input.is_action_pressed("rotate_build")
 	
 	if GlobalVars.cur_state == GlobalVars.STATES.normal:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("units") and GlobalVars.mouse_hovering_ui == false:
@@ -50,7 +57,8 @@ func _process(delta: float) -> void:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("buildings") and GlobalVars.mouse_hovering_ui == false:
 			if Input.is_action_just_pressed("confirm_build"):
 				if selected_building != null:
-					selected_building.selected = false
+					if is_instance_valid(selected_building):
+						selected_building.selected = false
 				selected_building = get_node(GlobalVars.global_item_selected).get_parent()
 				if selected_building.data.faction == GlobalVars.player_faction:
 					selected_building.selected = true
@@ -85,7 +93,8 @@ func _process(delta: float) -> void:
 						if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.attack_move
-							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
+							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent().global_transform.origin)
+							print(get_node(GlobalVars.global_item_selected).global_transform.origin)
 							angle += 2.0*PI / 12
 			
 	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:

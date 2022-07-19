@@ -6,17 +6,17 @@ offsets = PoolRealArray( 0, 0.812834 )
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
 
-[sub_resource type="ProceduralSky" id=1]
-sky_top_color = Color( 0.109804, 0.109804, 0.109804, 1 )
-sky_horizon_color = Color( 0.262745, 0.262745, 0.262745, 1 )
-ground_bottom_color = Color( 0, 0, 0, 1 )
-ground_horizon_color = Color( 0, 0, 0, 1 )
-ground_curve = 0.0585634
+[sub_resource type="ProceduralSky" id=4]
+sky_top_color = Color( 1, 1, 1, 1 )
+sky_horizon_color = Color( 1, 1, 1, 1 )
+ground_bottom_color = Color( 1, 1, 1, 1 )
+ground_horizon_color = Color( 1, 1, 1, 1 )
+ground_curve = 0.09
 
 [resource]
-background_mode = 1
-background_sky = SubResource( 1 )
-background_color = Color( 0.686275, 0.305882, 0, 1 )
+background_mode = 2
+background_sky = SubResource( 4 )
+background_color = Color( 1, 1, 1, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 fog_enabled = true
 fog_depth_begin = 5.0

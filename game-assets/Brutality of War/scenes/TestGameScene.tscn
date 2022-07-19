@@ -19,7 +19,7 @@ data = PoolVector3Array( -5.4, 0.275, 4.2, -5.4, -0.275, 4.2, -5.4, 0.275, 3.4, 
 script = ExtResource( 3 )
 
 [node name="CameraPivot" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 208 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 354 )
 
 [node name="Navigation" type="Navigation" parent="."]
 

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			return
 		if targets[0] != null:
 			if is_instance_valid(targets[0]):
-				var node_turret_gun : MeshInstance = get_node(turret_gun)
+				var node_turret_gun : Spatial = get_node(turret_gun)
 				var node_enemy_pos_flat = get_node(enemy_pos_flat)
 				node_enemy_pos_flat.global_transform.origin.x = lerp(node_enemy_pos_flat.global_transform.origin.x, targets[0].global_transform.origin.x, delta * 10)
 				node_enemy_pos_flat.global_transform.origin.z = lerp(node_enemy_pos_flat.global_transform.origin.z, targets[0].global_transform.origin.z, delta * 10)
@@ -39,12 +39,12 @@ func shoot():
 		$ShootDelay.start()
 
 func _on_Vision_body_entered(body: Node) -> void:
-	if body.is_in_group("units"):
+	if body.is_in_group("units") and body.data.faction != data.faction:
 		targets.append(body)
 
 func _on_ShootDelay_timeout() -> void:
 	can_shoot = true
 
 func _on_Vision_body_exited(body: Node) -> void:
-	if body.is_in_group("units"):
+	if body.is_in_group("units") and body.data.faction != data.faction:
 		targets.erase(body)

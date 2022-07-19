@@ -9,7 +9,7 @@ enum STATE {
 	dead
 }
 
-var move_speed : float = 6.0
+var move_speed : float = 32.0
 
 var state = STATE.idle
 var can_attack : bool = true
@@ -25,6 +25,8 @@ export var selected_marker : NodePath
 export var muzzle : NodePath
 export var shoot_timer : NodePath
 export var vision : NodePath
+export var left_whisker : NodePath
+export var right_whisker : NodePath
 
 func _ready() -> void:
 	cur_health = data.health
@@ -60,8 +62,19 @@ func do_attack_moving():
 		if (path[path.size() - 1] - global_transform.origin).length() < 1:
 			state = STATE.attacking
 		else:
+			look_while_move(move_vec)
+			if get_node(left_whisker).is_colliding():
+				move_vec.x -= 1
+			if get_node(right_whisker).is_colliding():
+				move_vec.x += 1
 			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
+			
+func look_while_move(move_vec):
+	look_at(transform.origin + move_vec, Vector3.UP)
+#	if get_node(left_whisker).is_colliding():
+#		rotation_degrees.y += 1
+#	if get_node(right_whisker).is_colliding():
+#		rotation_degrees.y -= 1
 			
 func do_moving():
 	if path_ind < path.size():
@@ -69,8 +82,12 @@ func do_moving():
 		if move_vec.length() < 1:
 			path_ind += 1
 		else:
+			look_while_move(move_vec)
+			if get_node(left_whisker).is_colliding():
+				move_vec.x -= 1
+			if get_node(right_whisker).is_colliding():
+				move_vec.x += 1
 			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
 	
 	
 func do_attacking():
