@@ -18,3 +18,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if cur_health <= 0:
 		queue_free()
+	if cur_state == STATES.sell:
+		queue_free()
+		GlobalVars.current_money += data.cost / 2

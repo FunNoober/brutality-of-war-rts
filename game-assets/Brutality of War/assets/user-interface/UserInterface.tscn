@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/user-interface/BuildButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOSupplyDepotBlueprint.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOOutpostBlueprint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOBarracksBlueprint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOPowerPlantBlueprint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOHeavyMachineGunPosition.tscn" type="PackedScene" id=8]
 
 [node name="UserInterface" type="CanvasLayer"]
 
@@ -15,10 +16,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -152.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+
 [node name="MoneyLabel" type="Label" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -231.0
+margin_left = -152.0
 margin_bottom = 14.0
 text = "$50,000,00"
 align = 1
@@ -29,14 +39,14 @@ anchor_bottom = 1.0
 margin_right = 143.0
 
 [node name="SellModeButton" type="CheckButton" parent="Control/Buttons"]
-margin_right = 143.0
+margin_right = 195.0
 margin_bottom = 40.0
 text = "Sell Mode"
 script = ExtResource( 4 )
 
 [node name="BuildButton" type="Button" parent="Control/Buttons"]
 margin_top = 44.0
-margin_right = 143.0
+margin_right = 195.0
 margin_bottom = 64.0
 text = "Supply Depot"
 script = ExtResource( 1 )
@@ -44,7 +54,7 @@ building_blueprint = ExtResource( 2 )
 
 [node name="OutpostButton" type="Button" parent="Control/Buttons"]
 margin_top = 68.0
-margin_right = 143.0
+margin_right = 195.0
 margin_bottom = 88.0
 text = "Outpost"
 script = ExtResource( 1 )
@@ -52,7 +62,7 @@ building_blueprint = ExtResource( 5 )
 
 [node name="BarracksButton" type="Button" parent="Control/Buttons"]
 margin_top = 92.0
-margin_right = 143.0
+margin_right = 195.0
 margin_bottom = 112.0
 text = "Barracks"
 script = ExtResource( 1 )
@@ -60,10 +70,18 @@ building_blueprint = ExtResource( 6 )
 
 [node name="PowerPlantButton" type="Button" parent="Control/Buttons"]
 margin_top = 116.0
-margin_right = 143.0
+margin_right = 195.0
 margin_bottom = 136.0
 text = "Power Plant"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 7 )
+
+[node name="HeavyMachineGunPositionButton" type="Button" parent="Control/Buttons"]
+margin_top = 140.0
+margin_right = 195.0
+margin_bottom = 160.0
+text = "Heavy Machine Gun Position"
+script = ExtResource( 1 )
+building_blueprint = ExtResource( 8 )
 
 [connection signal="toggled" from="Control/Buttons/SellModeButton" to="Control/Buttons/SellModeButton" method="_on_SellModeButton_toggled"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/prefabs/CameraPivot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/prefabs/units/PrototypeUnit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://assets/3d-models/maps/Areanas/Areana 1.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/prefabs/units/NATO/NATO Challenger 3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/prefabs/buildings/WarsawPact/WarsawTurret.tscn" type="PackedScene" id=7]
 
@@ -135,8 +136,11 @@ transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -78.4501,
 transform = Transform( 0.528768, -0.53357, 0.660081, -0.780463, -4.06883e-09, 0.625202, -0.333589, -0.845756, -0.416432, 0, 0, 0 )
 shadow_enabled = true
 
+[node name="NATO Challenger 3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56519, 1.43887, 281.526 )
+
 [node name="KinematicBody" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7936, 0.959066, 268.536 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7936, 0.959066, 268.536 )
 
 [node name="KinematicBody2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7177, 0.959067, 276.788 )

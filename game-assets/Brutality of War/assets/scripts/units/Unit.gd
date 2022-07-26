@@ -9,7 +9,7 @@ enum STATE {
 	dead
 }
 
-var move_speed : float = 32.0
+var move_speed : float = 4.0
 
 var state = STATE.idle
 var can_attack : bool = true
@@ -18,6 +18,10 @@ var selected : bool
 var path = []
 var path_ind : int = 0
 var target : Vector3
+var dir_to_face : float
+var lookdir : float
+var move_vec : Vector3
+var target_pos : Vector3
 
 export var projectile : PackedScene
 export var data : Resource
@@ -45,6 +49,8 @@ func _physics_process(delta):
 	if cur_health <= 0:
 		state = STATE.dead
 	match state:
+		STATE.idle:
+			dir_to_face = 0
 		STATE.moving:
 			do_moving()
 		STATE.attack_move:
@@ -54,42 +60,40 @@ func _physics_process(delta):
 		STATE.dead:
 			queue_free()
  
+			
+func look_while_move(move_vec):
+	if state != STATE.idle and state != STATE.attacking:
+		if get_node(left_whisker).is_colliding() and get_node(right_whisker).is_colliding() == false:
+			dir_to_face -= 0
+		if get_node(right_whisker).is_colliding() and get_node(left_whisker).is_colliding() == false:
+			dir_to_face -= 0
+		if get_node(left_whisker).is_colliding() == false and get_node(right_whisker).is_colliding() == false:
+			dir_to_face = 0
+		lookdir = atan2(-move_vec.x + dir_to_face, -move_vec.z + dir_to_face)
+		rotation.y = lerp(rotation.y, lookdir, GlobalVars.global_delta * 5)
+			
 func do_attack_moving():
 	if path_ind < path.size():
-		var move_vec = (path[path_ind] - global_transform.origin)
+		move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 1:
 			path_ind += 1
 		if (path[path.size() - 1] - global_transform.origin).length() < 1:
 			state = STATE.attacking
 		else:
 			look_while_move(move_vec)
-			if get_node(left_whisker).is_colliding():
-				move_vec.x -= 1
-			if get_node(right_whisker).is_colliding():
-				move_vec.x += 1
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			
-func look_while_move(move_vec):
-	look_at(transform.origin + move_vec, Vector3.UP)
-#	if get_node(left_whisker).is_colliding():
-#		rotation_degrees.y += 1
-#	if get_node(right_whisker).is_colliding():
-#		rotation_degrees.y -= 1
+			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
 			
 func do_moving():
 	if path_ind < path.size():
-		var move_vec = (path[path_ind] - global_transform.origin)
+		move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 1:
 			path_ind += 1
+		if (path[path.size() - 1]).distance_to(global_transform.origin) < 1:
+			state = STATE.idle
 		else:
 			look_while_move(move_vec)
-			if get_node(left_whisker).is_colliding():
-				move_vec.x -= 1
-			if get_node(right_whisker).is_colliding():
-				move_vec.x += 1
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-	
-	
+			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
+			
 func do_attacking():
 	var look_at_pos = target
 	look_at_pos.x = stepify(look_at_pos.x, 0.001)
@@ -109,6 +113,7 @@ func attack():
 		get_node(shoot_timer).start()
 
 func move_to(target_pos):
+	target_pos = target_pos
 	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)
 	path_ind = 0
 

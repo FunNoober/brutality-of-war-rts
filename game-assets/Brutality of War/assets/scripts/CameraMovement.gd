@@ -19,7 +19,11 @@ func _input(event: InputEvent) -> void:
 			self.rotate_y(deg2rad(event.relative.x * -1))
 	
 func calcute_movement(action_one : String, action_two : String, delta : float):
-	var mov = (Input.get_action_strength(action_one) - Input.get_action_strength(action_two)) * delta * move_speed
+	var mov
+	if Input.is_action_pressed("modifier") == false:
+		mov = (Input.get_action_strength(action_one) - Input.get_action_strength(action_two)) * delta * move_speed
+	else:
+		mov = (Input.get_action_strength(action_one) - Input.get_action_strength(action_two)) * delta * move_speed * 3
 	return mov
 	
 func _process(delta: float) -> void:
@@ -73,7 +77,7 @@ func _process(delta: float) -> void:
 			if building_selected.data.faction == GlobalVars.player_faction:
 				building_selected.cur_state = building_selected.STATES.sell
 	
-	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected).get_groups().size() > 0 and GlobalVars.mouse_hovering_ui == false:
+	if Input.is_action_just_pressed("cancel_build") and get_node(GlobalVars.global_item_selected) != null and get_node(GlobalVars.global_item_selected).get_groups().size() > 0 and GlobalVars.mouse_hovering_ui == false:
 		match get_node(GlobalVars.global_item_selected).get_groups()[0]:
 			"ground":
 				var angle = 0

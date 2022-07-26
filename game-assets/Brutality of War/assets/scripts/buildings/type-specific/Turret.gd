@@ -11,7 +11,10 @@ var targets = []
 var can_shoot : bool = true
 
 func _process(delta: float) -> void:
-		
+	if cur_state == STATES.sell:
+		queue_free()
+		GlobalVars.current_money += data.cost / 2
+	
 	if targets.size() > 0:
 		if is_instance_valid(targets[0]) == false:
 			targets.remove(0)

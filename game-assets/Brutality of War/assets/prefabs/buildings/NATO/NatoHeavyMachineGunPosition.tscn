@@ -21,7 +21,7 @@ projectile = ExtResource( 5 )
 turret_clamp = 60.0
 
 [node name="Vision" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6 )
 collision_layer = 2
 collision_mask = 2
 
@@ -31,7 +31,7 @@ depth = 3.0
 polygon = PoolVector2Array( 15, 15, -15, 15, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="." groups=["buildings"]]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.59273 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 2
 
@@ -39,13 +39,13 @@ collision_mask = 2
 shape = SubResource( 1 )
 
 [node name="NATO Heavy Machine Gun Position" type="MeshInstance" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 4.59273 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 material_override = ExtResource( 2 )
 mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="GunPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42, 0.291 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42, -4.53606 )
 
 [node name="Gun" type="Spatial" parent="GunPivot"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.76066e-07, 3.92199e-05, 3.80278e-05 )

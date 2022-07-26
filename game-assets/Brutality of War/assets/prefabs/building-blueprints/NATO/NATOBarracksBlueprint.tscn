@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/3d-models/buildings/NATO/NATO Barracks/NATO Barracks.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=3]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOBarracks.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/textures-materials/BlueprintMaterial.tres" type="Material" id=5]
+[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=5]
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -4, 0, -10, -4, 0, 8, -4, 8, -10, 20, 0, -10, -4, 4, 8, 2.99843, 0, 8, -4, 8, -3.00157, 20, 8, -10, 20, 0, -3.00157, 2.99843, 4, 8, 18.9992, 0, 6.99922, 20, 8, -3.00157, 18.9992, 1.79953, 6.99922 )

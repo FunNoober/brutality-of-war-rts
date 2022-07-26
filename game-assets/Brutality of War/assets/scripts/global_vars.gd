@@ -21,3 +21,8 @@ enum STATES {
 }
 
 var cur_state = STATES.normal
+
+var global_delta
+
+func _process(delta: float) -> void:
+	global_delta = delta
