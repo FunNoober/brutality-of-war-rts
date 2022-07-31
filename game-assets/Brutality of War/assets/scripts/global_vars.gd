@@ -3,6 +3,8 @@ extends Node
 var global_mouse_pos : Vector3
 var global_item_selected : NodePath
 var units_selected = []
+var nato_units = []
+var warsaw_units = []
 
 var mouse_hovering_ui : bool = false
 
@@ -20,7 +22,13 @@ enum STATES {
 	sell_mode
 }
 
+enum MODES {
+	defensive,
+	offensive
+}
+
 var cur_state = STATES.normal
+var cur_mode = MODES.defensive
 
 var global_delta
 

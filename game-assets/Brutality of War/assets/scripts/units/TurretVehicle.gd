@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 func look_while_move(move_vec):
 	lookdir = atan2(-move_vec.x, -move_vec.z)
-	rotation.y = lerp(rotation.y, lookdir, GlobalVars.global_delta * 5)
+	rotation.y = lookdir
 
 func do_moving():
 	if path_ind < path.size():
@@ -62,7 +62,7 @@ func do_moving():
 			state = STATE.idle
 		else:
 			look_while_move(move_vec)
-			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
+			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
 			
 func do_attack_moving():
 	if path_ind < path.size():
@@ -73,7 +73,7 @@ func do_attack_moving():
 			state = STATE.attacking
 		else:
 			look_while_move(move_vec)
-			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
+			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
 			
 func do_attacking():
 	var look_at_pos = target

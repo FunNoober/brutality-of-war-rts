@@ -5,6 +5,7 @@ var selected_units = []
 var selected_building : Spatial
 var is_holding_modifier : bool
 var is_rotation_camera: bool
+export var camera_bounds = Vector2()
 
 func input(delta):
 	var mov_x = calcute_movement("move_left", "move_right", delta)
@@ -17,6 +18,18 @@ func _input(event: InputEvent) -> void:
 	if is_rotation_camera:
 		if event is InputEventMouseMotion:
 			self.rotate_y(deg2rad(event.relative.x * -1))
+	if event is InputEventMouseButton:
+		event as InputEventMouseButton
+		if event.pressed:
+			match event.button_index:
+				BUTTON_WHEEL_UP:
+					if $Camera.translation.y - 1 != 5:
+						$Camera.translation.y -= 1
+						$Camera.translation.z -= 1
+				BUTTON_WHEEL_DOWN:
+					if $Camera.translation.y + 1 != 30:
+						$Camera.translation.y += 1
+						$Camera.translation.z += 1
 	
 func calcute_movement(action_one : String, action_two : String, delta : float):
 	var mov
@@ -28,6 +41,8 @@ func calcute_movement(action_one : String, action_two : String, delta : float):
 	
 func _process(delta: float) -> void:
 	input(delta)
+	transform.origin.x = clamp(transform.origin.x, -camera_bounds.x, camera_bounds.x)
+	transform.origin.z = clamp(transform.origin.z, -camera_bounds.y, camera_bounds.y)
 	
 	match GlobalVars.cur_state:
 		GlobalVars.STATES.build_mode:

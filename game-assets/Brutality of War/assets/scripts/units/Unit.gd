@@ -9,7 +9,7 @@ enum STATE {
 	dead
 }
 
-var move_speed : float = 4.0
+var move_speed : float = 8.0
 
 var state = STATE.idle
 var can_attack : bool = true
@@ -18,10 +18,10 @@ var selected : bool
 var path = []
 var path_ind : int = 0
 var target : Vector3
-var dir_to_face : float
-var lookdir : float
 var move_vec : Vector3
 var target_pos : Vector3
+var command_bonus : bool = false
+var has_applied_bonus : bool = false
 
 export var projectile : PackedScene
 export var data : Resource
@@ -29,12 +29,15 @@ export var selected_marker : NodePath
 export var muzzle : NodePath
 export var shoot_timer : NodePath
 export var vision : NodePath
-export var left_whisker : NodePath
-export var right_whisker : NodePath
 
 func _ready() -> void:
 	cur_health = data.health
 	get_node(vision).connect("body_entered", self, "vision_entered")
+	if data.faction == data.FACTIONS.NATO:
+		GlobalVars.nato_units.append(self)
+	if data.faction == data.FACTIONS.WarsawPact:
+		GlobalVars.warsaw_units.append(self)
+	move_speed = data.mov_speed
 
 func attack_init(new_target):
 	target = new_target
@@ -44,13 +47,16 @@ func _process(delta: float) -> void:
 		get_node(selected_marker).show()
 	if selected == false and get_node(selected_marker).is_visible_in_tree() == true:
 		get_node(selected_marker).hide()
+	if command_bonus == true and has_applied_bonus == false:
+		data.attack_rate = data.attack_rate * 0.75
+		data.health = data.health * 2
+		move_speed = move_speed * 1.75
+		has_applied_bonus = true
 
 func _physics_process(delta):
 	if cur_health <= 0:
 		state = STATE.dead
 	match state:
-		STATE.idle:
-			dir_to_face = 0
 		STATE.moving:
 			do_moving()
 		STATE.attack_move:
@@ -61,38 +67,32 @@ func _physics_process(delta):
 			queue_free()
  
 			
-func look_while_move(move_vec):
-	if state != STATE.idle and state != STATE.attacking:
-		if get_node(left_whisker).is_colliding() and get_node(right_whisker).is_colliding() == false:
-			dir_to_face -= 0
-		if get_node(right_whisker).is_colliding() and get_node(left_whisker).is_colliding() == false:
-			dir_to_face -= 0
-		if get_node(left_whisker).is_colliding() == false and get_node(right_whisker).is_colliding() == false:
-			dir_to_face = 0
-		lookdir = atan2(-move_vec.x + dir_to_face, -move_vec.z + dir_to_face)
-		rotation.y = lerp(rotation.y, lookdir, GlobalVars.global_delta * 5)
+func look_while_move():
+	look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
 			
 func do_attack_moving():
 	if path_ind < path.size():
+		move_vec = Vector3()
 		move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 1:
 			path_ind += 1
 		if (path[path.size() - 1] - global_transform.origin).length() < 1:
 			state = STATE.attacking
 		else:
-			look_while_move(move_vec)
-			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
+			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
+			look_while_move()
 			
 func do_moving():
 	if path_ind < path.size():
+		move_vec = Vector3()
 		move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 1:
 			path_ind += 1
 		if (path[path.size() - 1]).distance_to(global_transform.origin) < 1:
 			state = STATE.idle
 		else:
-			look_while_move(move_vec)
-			move_and_slide(-transform.basis.z * move_speed, Vector3(0, 1, 0))
+			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
+			look_while_move()
 			
 func do_attacking():
 	var look_at_pos = target
@@ -110,11 +110,11 @@ func attack():
 		p.rotation = get_node(muzzle).global_transform.basis.get_euler()
 		p.translation = get_node(muzzle).global_transform.origin
 		p.set_direction(25, data.damage)
-		get_node(shoot_timer).start()
+		get_node(shoot_timer).start(data.attack_rate)
 
-func move_to(target_pos):
-	target_pos = target_pos
-	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)
+func move_to(target_pos_loc):
+	target_pos = target_pos_loc
+	path = get_node(GlobalVars.active_navigation).get_simple_path(global_transform.origin, target_pos_loc)
 	path_ind = 0
 
 func _on_ShootTimer_timeout() -> void:
