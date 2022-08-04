@@ -58,9 +58,9 @@ func _physics_process(delta):
 		state = STATE.dead
 	match state:
 		STATE.moving:
-			do_moving()
+			do_moving(0)
 		STATE.attack_move:
-			do_attack_moving()
+			do_moving(3)
 		STATE.attacking:
 			do_attacking()
 		STATE.dead:
@@ -70,26 +70,14 @@ func _physics_process(delta):
 func look_while_move():
 	look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
 			
-func do_attack_moving():
-	if path_ind < path.size():
-		move_vec = Vector3()
-		move_vec = (path[path_ind] - global_transform.origin)
-		if move_vec.length() < 1:
-			path_ind += 1
-		if (path[path.size() - 1] - global_transform.origin).length() < 1:
-			state = STATE.attacking
-		else:
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			look_while_move()
-			
-func do_moving():
+func do_moving(state_to_switch_to):
 	if path_ind < path.size():
 		move_vec = Vector3()
 		move_vec = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 1:
 			path_ind += 1
 		if (path[path.size() - 1]).distance_to(global_transform.origin) < 1:
-			state = STATE.idle
+			state = state_to_switch_to
 		else:
 			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
 			look_while_move()

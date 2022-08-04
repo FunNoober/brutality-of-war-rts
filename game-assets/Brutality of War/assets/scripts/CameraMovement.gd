@@ -6,6 +6,7 @@ var selected_building : Spatial
 var is_holding_modifier : bool
 var is_rotation_camera: bool
 export var camera_bounds = Vector2()
+onready var cam = $Camera
 
 func input(delta):
 	var mov_x = calcute_movement("move_left", "move_right", delta)
@@ -18,18 +19,18 @@ func _input(event: InputEvent) -> void:
 	if is_rotation_camera:
 		if event is InputEventMouseMotion:
 			self.rotate_y(deg2rad(event.relative.x * -1))
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and GlobalVars.cur_state != GlobalVars.STATES.build_mode:
 		event as InputEventMouseButton
 		if event.pressed:
 			match event.button_index:
 				BUTTON_WHEEL_UP:
-					if $Camera.translation.y - 1 != 5:
-						$Camera.translation.y -= 1
-						$Camera.translation.z -= 1
+					if cam.translation.y - 1 != 5:
+						cam.translation.y -= 1
+						cam.translation.z -= 1
 				BUTTON_WHEEL_DOWN:
-					if $Camera.translation.y + 1 != 30:
-						$Camera.translation.y += 1
-						$Camera.translation.z += 1
+					if cam.translation.y + 1 != 30:
+						cam.translation.y += 1
+						cam.translation.z += 1
 	
 func calcute_movement(action_one : String, action_two : String, delta : float):
 	var mov
@@ -129,8 +130,8 @@ func _process(delta: float) -> void:
 func mouse_ray(collision_mask):
 	var space_state = get_world().direct_space_state
 	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_origin = $Camera.project_ray_origin(mouse_pos)
-	var ray_end = ray_origin + $Camera.project_ray_normal(mouse_pos) * 2000
+	var ray_origin = cam.project_ray_origin(mouse_pos)
+	var ray_end = ray_origin + cam.project_ray_normal(mouse_pos) * 2000
 	var intersection = space_state.intersect_ray(ray_origin, ray_end, [], collision_mask)
 	
 	if not intersection.empty():

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=1]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Command And Control Center/NATO Command And Control Center.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/data/building-data/NATO/NATOOutpost.tres" type="Resource" id=3]
+[ext_resource path="res://assets/prefabs/buildings/NATO/NATOCommandAndControlCenter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=5]
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -4.92005, 0.0233795, -11.0119, 6.66765, 7.63432, -6.75031, 6.66765, 0.353002, -6.75031, -5.07681, 5.04819, 3.11746, -5.85555, 7.5591, -11.0365, 4.83556, 0.074924, 1.91554, -1.78866, 9.51429, 0.296206, 6.48002, 7.54747, -11.0096, -5.07681, -0.11746, 3.11746, 5.02234, 4.11198, 2.17704, 6, 0.0441259, -10.9825, 2.36736, 7.98767, -11.661, -6.01806, 0.353002, -6.74884, -6.01806, 7.63432, -6.74884, -0.580022, 0.0505263, -11.6552, -5.07681, 8.10384, -1.11221, 6.19703, -0.11746, -6.98431, -5.83965, 0.47523, -11.0195, -0.580022, 7.98505, -11.6552, 1, 0.0718422, 2.82196, 5.93615, 7.95255, -10.9085, -3.66743, 9.04382, -3.22558, 2.36735, 0.0468296, -11.661, -5.07806, -0.11746, -6.51484, 6.46894, 0.489134, -10.9977, 6.43172, 7.86908, -6.75031, -5.00567, 7.91835, -10.84, -2.2568, 9.51429, 0.296206, -1.78866, 9.27858, 0.53315, -4.3715, 8.80812, -2.75611, -1.78866, 9.51429, 0.0622044, 4.86266, 7.98809, -11.207, -5.78213, 7.86908, -6.74884, -2.2568, 9.51429, 0.0622044 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 7.36804, 6, 7.51404 )
+
+[node name="NATOBarracksBlueprint" type="Spatial"]
+script = ExtResource( 1 )
+building_to_instance = ExtResource( 4 )
+data = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = ExtResource( 5 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="KinematicBody" type="KinematicBody" parent="." groups=["building-blueprints"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+shape = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00747728, 5, -4.38645 )
+shape = SubResource( 3 )

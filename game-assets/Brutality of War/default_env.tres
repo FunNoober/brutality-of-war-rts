@@ -3,7 +3,8 @@
 [ext_resource path="res://assets/textures-materials/hdris/Low Poly Mountains HDRI.png" type="Texture" id=1]
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.812834 )
+offsets = PoolRealArray( 0, 0.125714, 1 )
+colors = PoolColorArray( 0.384314, 0.423529, 0.517647, 1, 0.423014, 0.459765, 0.547966, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
@@ -16,10 +17,12 @@ background_mode = 2
 background_sky = SubResource( 4 )
 background_color = Color( 1, 1, 1, 1 )
 ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 0.0
 fog_enabled = true
 fog_depth_begin = 5.0
 fog_depth_end = 250.0
 tonemap_mode = 3
+ss_reflections_depth_tolerance = 0.1
+ssao_enabled = true
+ssao_radius = 1.07
 glow_enabled = true
 adjustment_color_correction = SubResource( 3 )

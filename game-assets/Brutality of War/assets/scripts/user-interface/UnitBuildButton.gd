@@ -8,6 +8,9 @@ signal build_pressed(to_spawn, u_data)
 func _ready() -> void:
 	connect("pressed", self, "button_pressed")
 	
+func _process(delta: float) -> void:
+	disabled = (unit_data.cost >= GlobalVars.current_money)
+	
 func button_pressed():
 	emit_signal("build_pressed", unit_to_spawn, unit_data)
 

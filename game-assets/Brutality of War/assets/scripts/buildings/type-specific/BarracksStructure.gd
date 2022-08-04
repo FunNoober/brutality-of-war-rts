@@ -35,6 +35,7 @@ func _on_SpawnTimer_timeout() -> void:
 		var unit = queue[0].instance()
 		get_node(GlobalVars.active_scene).get_node("Navigation").add_child(unit)
 		unit.global_transform.origin = $SpawnPosition.global_transform.origin
+		GlobalVars.current_money -= queue_data[0].cost
 		queue.remove(0)
 		queue_data.remove(0)
 	is_constructing = false
