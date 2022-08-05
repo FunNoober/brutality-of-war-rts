@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/scripts/user-interface/BuildButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOOutpostBlueprint.tscn" type="PackedScene" id=2]
@@ -14,12 +14,34 @@
 [ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOCommandandControlCenterBlueprint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/scripts/buildings/type-specific/NATOPrefabConstructor.gd" type="Script" id=13]
 [ext_resource path="res://assets/data/building-data/NATO/NATOPrefabConstructor.tres" type="Resource" id=14]
+[ext_resource path="res://assets/icons/cpu.png" type="Texture" id=15]
+[ext_resource path="res://assets/icons/hexagon-money.png" type="Texture" id=16]
+[ext_resource path="res://assets/icons/zap.png" type="Texture" id=17]
+[ext_resource path="res://assets/icons/user.png" type="Texture" id=18]
+[ext_resource path="res://assets/icons/circle.png" type="Texture" id=19]
+[ext_resource path="res://assets/icons/arrow-left-base.png" type="Texture" id=20]
 
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( -2, 1, 1.5, 2, 1, 1.5, -2, -1, 1.5, 2, 1, 1.5, 2, -1, 1.5, -2, -1, 1.5, 2, 1, -1.5, -2, 1, -1.5, 2, -1, -1.5, -2, 1, -1.5, -2, -1, -1.5, 2, -1, -1.5, 2, 1, 1.5, 2, 1, -1.5, 2, -1, 1.5, 2, 1, -1.5, 2, -1, -1.5, 2, -1, 1.5, -2, 1, -1.5, -2, 1, 1.5, -2, -1, -1.5, -2, 1, 1.5, -2, -1, 1.5, -2, -1, -1.5, 2, 1, 1.5, -2, 1, 1.5, 2, 1, -1.5, -2, 1, 1.5, -2, 1, -1.5, 2, 1, -1.5, -2, -1, 1.5, 2, -1, 1.5, -2, -1, -1.5, 2, -1, 1.5, 2, -1, -1.5, -2, -1, -1.5 )
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 4, 2, 3 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+octaves = 7
+period = 21.4
+persistence = 1.0
+
+[sub_resource type="NoiseTexture" id=4]
+noise = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0.380392, 1, 1 )
+albedo_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 4 )
+uv1_triplanar = true
 
 [node name="NATOPrefabConstructor" type="Spatial"]
 script = ExtResource( 13 )
@@ -34,9 +56,9 @@ collision_mask = 2
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = SubResource( 5 )
 
 [node name="BuildUI" type="CanvasLayer" parent="."]
 
@@ -46,7 +68,6 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="ControlButtons" type="VBoxContainer" parent="BuildUI/Control"]
-visible = false
 anchor_bottom = 1.0
 margin_top = 230.0
 margin_right = 200.0
@@ -54,54 +75,60 @@ margin_bottom = -230.0
 alignment = 1
 
 [node name="SupplyDepotButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_right = 200.0
-margin_bottom = 20.0
+margin_right = 226.0
+margin_bottom = 30.0
 text = "Supply Depot"
+icon = ExtResource( 16 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 3 )
 building_data = ExtResource( 8 )
 
 [node name="OutpostButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_top = 24.0
-margin_right = 200.0
-margin_bottom = 44.0
+margin_top = 34.0
+margin_right = 226.0
+margin_bottom = 64.0
 text = "Outpost"
+icon = ExtResource( 19 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 2 )
 building_data = ExtResource( 4 )
 
 [node name="BarracksButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_top = 48.0
-margin_right = 200.0
-margin_bottom = 68.0
+margin_top = 68.0
+margin_right = 226.0
+margin_bottom = 98.0
 text = "Barracks"
+icon = ExtResource( 18 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 9 )
 building_data = ExtResource( 5 )
 
 [node name="PowerPlantButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_top = 72.0
-margin_right = 200.0
-margin_bottom = 92.0
+margin_top = 102.0
+margin_right = 226.0
+margin_bottom = 132.0
 text = "Power Plant"
+icon = ExtResource( 17 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 11 )
 building_data = ExtResource( 6 )
 
 [node name="HeavyMachineGunPositionButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_top = 96.0
-margin_right = 200.0
-margin_bottom = 116.0
+margin_top = 136.0
+margin_right = 226.0
+margin_bottom = 166.0
 text = "Heavy Machine Gun Position"
+icon = ExtResource( 20 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 10 )
 building_data = ExtResource( 7 )
 
 [node name="CommandAndControlCenterButton" type="Button" parent="BuildUI/Control/ControlButtons"]
-margin_top = 120.0
-margin_right = 200.0
-margin_bottom = 140.0
+margin_top = 170.0
+margin_right = 226.0
+margin_bottom = 200.0
 text = "Command and Control Center"
+icon = ExtResource( 15 )
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 12 )
 building_data = ExtResource( 4 )

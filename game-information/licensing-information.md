@@ -17,3 +17,7 @@ Licensed under the Open Font License.
 ## Press Start 2P (Font)
 Designed by CodeMan38, provided by Google Fonts.
 Licensed under the Open Font License.
+
+# Icons
+Designed by colebemis.
+Licensed under the MIT open source license.

@@ -5,6 +5,8 @@ var global_item_selected : NodePath
 var units_selected = []
 var nato_units = []
 var warsaw_units = []
+var nato_buildings = []
+var warsaw_buildings = []
 
 var mouse_hovering_ui : bool = false
 

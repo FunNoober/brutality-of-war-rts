@@ -14,6 +14,10 @@ var cur_state = STATES.defense
 
 func _ready() -> void:
 	cur_health = data.health
+	if data.faction == data.FACTIONS.NATO:
+		GlobalVars.nato_buildings.append(self)
+	if data.faction == data.FACTIONS.WarsawPact:
+		GlobalVars.warsaw_buildings.append(self)
 
 func _process(delta: float) -> void:
 	if cur_health <= 0:

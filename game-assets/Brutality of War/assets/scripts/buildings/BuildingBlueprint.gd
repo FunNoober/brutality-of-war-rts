@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("cancel_build"):
 			GlobalVars.cur_state = GlobalVars.STATES.normal
 			queue_free()
-	if frames_since_spawned >= 30:
+	if frames_since_spawned >= 5:
 		just_spawned = false
 
 func _input(event: InputEvent) -> void:
