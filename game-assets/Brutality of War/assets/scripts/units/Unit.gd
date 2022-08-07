@@ -9,19 +9,17 @@ enum STATE {
 	dead
 }
 
-var move_speed : float = 8.0
+export var move_speed : float = 8.0
 
 var state = STATE.idle
 var can_attack : bool = true
 var cur_health : int = 100
 var selected : bool
-var path = []
-var path_ind : int = 0
 var target : Vector3
-var move_vec : Vector3
-var target_pos : Vector3
+var next_node_in_path : Vector3
 var command_bonus : bool = false
 var has_applied_bonus : bool = false
+var vel = Vector3.ZERO
 
 export var projectile : PackedScene
 export var data : Resource
@@ -33,6 +31,10 @@ export var vision : NodePath
 func _ready() -> void:
 	cur_health = data.health
 	get_node(vision).connect("body_entered", self, "vision_entered")
+	$NavigationAgent.connect("velocity_computed", self, "velocity_computed")
+	$NavigationAgent.connect("navigation_finished", self, "navigation_finished")
+	
+	
 	if data.faction == data.FACTIONS.NATO:
 		GlobalVars.nato_units.append(self)
 	if data.faction == data.FACTIONS.WarsawPact:
@@ -58,9 +60,9 @@ func _physics_process(delta):
 		state = STATE.dead
 	match state:
 		STATE.moving:
-			do_moving(0)
+			do_moving(delta)
 		STATE.attack_move:
-			do_moving(3)
+			do_moving(delta)
 		STATE.attacking:
 			do_attacking()
 		STATE.dead:
@@ -68,20 +70,16 @@ func _physics_process(delta):
  
 			
 func look_while_move():
-	look_at(transform.origin + move_vec.normalized() * move_speed, Vector3.UP)
+	rotation.y = atan2(-vel.x, -vel.z) #using look_at() is inconsistent
 			
-func do_moving(state_to_switch_to):
-	if path_ind < path.size():
-		move_vec = Vector3()
-		move_vec = (path[path_ind] - global_transform.origin)
-		if move_vec.length() < 1:
-			path_ind += 1
-		if (path[path.size() - 1]).distance_to(global_transform.origin) < 1:
-			state = state_to_switch_to
-		else:
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			look_while_move()
-			
+func do_moving(delta):
+	next_node_in_path = $NavigationAgent.get_next_location()
+	var dir = global_transform.origin.direction_to(next_node_in_path)
+	var steering = (dir - vel) * delta * move_speed
+	vel += steering
+	look_while_move()
+	$NavigationAgent.set_velocity(vel * delta * move_speed)
+	
 func do_attacking():
 	var look_at_pos = target
 	look_at_pos.x = stepify(look_at_pos.x, 0.001)
@@ -101,15 +99,22 @@ func attack():
 		get_node(shoot_timer).start(data.attack_rate)
 
 func move_to(target_pos_loc):
-	target_pos = target_pos_loc
-	path = get_node(GlobalVars.active_navigation).get_simple_path(global_transform.origin, target_pos_loc)
-	path_ind = 0
-
+	$NavigationAgent.set_target_location(target_pos_loc)
+	
 func _on_ShootTimer_timeout() -> void:
-	can_attack = true
+	can_attack = true 
 
 func vision_entered(body: Node) -> void:
 	if body.is_in_group("units") and body.data.faction != data.faction:
 		if state == STATE.idle:
 			move_to(body.global_transform.origin)
 			state = STATE.attack_move
+
+func velocity_computed(safe_velocity):
+	move_and_collide(safe_velocity)
+
+func navigation_finished():
+	if state == STATE.attack_move:
+		state = STATE.attacking
+	if state == STATE.moving:
+		state = STATE.idle

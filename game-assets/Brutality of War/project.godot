@@ -54,7 +54,6 @@ GlobalVars="*res://assets/scripts/global_vars.gd"
 
 [display]
 
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 

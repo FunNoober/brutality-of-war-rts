@@ -24,15 +24,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 15 )
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -152.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0, 0, 0, 1 )
-
 [node name="MoneyLabel" type="Label" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -42,12 +33,20 @@ text = "$50,000,00"
 align = 1
 valign = 1
 
+[node name="ColorRect" type="ColorRect" parent="Control/MoneyLabel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+
 [node name="Buttons" type="VBoxContainer" parent="Control"]
 anchor_bottom = 1.0
 margin_right = 143.0
 
 [node name="SellModeButton" type="CheckButton" parent="Control/Buttons"]
-margin_right = 143.0
+margin_right = 179.0
 margin_bottom = 40.0
 text = "Sell Mode"
 script = ExtResource( 4 )
