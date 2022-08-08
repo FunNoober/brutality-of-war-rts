@@ -68,12 +68,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3416, 2.03578, 178.116 )
 [node name="KinematicBody4" parent="Navigation" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6619, 2.03578, 184.479 )
 
+[node name="NATO Challenger 3" parent="Navigation" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56519, 1.43887, 171.526 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.963094, -0.260595, 0.067385, 0.15364, 0.737784, 0.65732, -0.22101, -0.622708, 0.750593, 0, 3, 0 )
 shadow_enabled = true
-
-[node name="NATO Challenger 3" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56519, 1.43887, 171.526 )
 
 [node name="NATOOutpost" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4118, 0.974361, 214.804 )

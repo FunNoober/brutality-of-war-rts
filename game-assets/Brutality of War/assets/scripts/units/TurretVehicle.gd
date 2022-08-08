@@ -14,12 +14,10 @@ var state = STATE.idle
 
 var move_speed : float = 14.0
 var selected : bool
-var path = []
-var path_ind : int = 0
-var lookdir : float
-var move_vec : Vector3
+var vel : Vector3
 var target_pos : Vector3
 var target : Vector3
+var next_node_in_path : Vector3
 var can_attack : bool = true
 var cur_health : int = 100
 
@@ -30,6 +28,8 @@ export var muzzle : NodePath
 
 func _ready() -> void:
 	get_node(shoot_timer).connect("timeout", self, "_on_ShootTimer_timeout")
+	$NavigationAgent.connect("navigation_finished", self, "_on_NavigationAgent_navigation_finished")
+	$NavigationAgent.connect("velocity_computed", self, "_on_NavigationAgent_velocity_computed")
 	cur_health = data.health
 
 func _process(delta: float) -> void:
@@ -41,39 +41,24 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	match state:
 		STATE.moving:
-			do_moving()
+			do_moving(delta)
 		STATE.attack_move:
-			do_attack_moving()
+			do_moving(delta)
 		STATE.attacking:
 			do_attacking()
 		STATE.dead:
 			pass
 
-func look_while_move(move_vec):
-	lookdir = atan2(-move_vec.x, -move_vec.z)
-	rotation.y = lookdir
+func look_while_move():
+	rotation.y = atan2(-vel.x, -vel.z) #using look_at() is inconsistent
 
-func do_moving():
-	if path_ind < path.size():
-		move_vec = (path[path_ind] - global_transform.origin)
-		if move_vec.length() < 1:
-			path_ind += 1
-		if (path[path.size() - 1]).distance_to(global_transform.origin) < 1:
-			state = STATE.idle
-		else:
-			look_while_move(move_vec)
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
-			
-func do_attack_moving():
-	if path_ind < path.size():
-		move_vec = (path[path_ind] - global_transform.origin)
-		if move_vec.length() < 1:
-			path_ind += 1
-		if (path[path.size() - 1] - global_transform.origin).length() < 1:
-			state = STATE.attacking
-		else:
-			look_while_move(move_vec)
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
+func do_moving(delta):
+	next_node_in_path = $NavigationAgent.get_next_location()
+	var dir = global_transform.origin.direction_to(next_node_in_path)
+	var steering = (dir - vel) * delta * move_speed
+	vel += steering
+	look_while_move()
+	$NavigationAgent.set_velocity(vel * delta * move_speed)
 			
 func do_attacking():
 	var look_at_pos = target
@@ -100,7 +85,14 @@ func attack():
 func _on_ShootTimer_timeout() -> void:
 	can_attack = true
 
-func move_to(target_pos):
-	target_pos = target_pos
-	path = get_node(GlobalVars.active_navigation).get_simple_path(translation, target_pos)
-	path_ind = 0
+func move_to(target_pos_loc):
+	$NavigationAgent.set_target_location(target_pos_loc)
+
+func _on_NavigationAgent_velocity_computed(safe_velocity: Vector3) -> void:
+	move_and_collide(safe_velocity)
+
+func _on_NavigationAgent_navigation_finished() -> void:
+	if state == STATE.attack_move:
+		state = STATE.attacking
+	if state == STATE.moving:
+		state = STATE.idle
