@@ -29,6 +29,13 @@ enum MODES {
 	offensive
 }
 
+enum COMPLETE_MODES {
+	defeat,
+	victory
+}
+
+var completion_mode
+
 var cur_state = STATES.normal
 var cur_mode = MODES.defensive
 
@@ -36,3 +43,21 @@ var global_delta
 
 func _process(delta: float) -> void:
 	global_delta = delta
+	if player_faction == 0: # if player is nato
+		if nato_buildings.size() <= 0:
+			completion_mode = COMPLETE_MODES.defeat
+		if warsaw_buildings.size() <= 0:
+			completion_mode = COMPLETE_MODES.victory
+	if player_faction == 1: # if player is warsaw
+		if warsaw_buildings.size() <= 0:
+			completion_mode = COMPLETE_MODES.defeat
+		if nato_buildings.size() <= 0:
+			completion_mode = COMPLETE_MODES.victory
+	if completion_mode == COMPLETE_MODES.defeat:
+		get_tree().reload_current_scene()
+		cur_state = STATES.normal
+		completion_mode = null
+	if completion_mode == COMPLETE_MODES.victory:
+		get_tree().reload_current_scene()
+		cur_state = STATES.normal
+		completion_mode = null

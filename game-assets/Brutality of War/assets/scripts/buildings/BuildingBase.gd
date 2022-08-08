@@ -7,7 +7,8 @@ var has_power : bool = false
 
 enum STATES {
 	defense,
-	sell
+	sell,
+	destroy
 }
 
 var cur_state = STATES.defense
@@ -21,7 +22,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if cur_health <= 0:
-		queue_free()
+		cur_state = STATES.destroy
 	if cur_state == STATES.sell:
+		if data.faction == data.FACTIONS.NATO:
+			GlobalVars.nato_buildings.erase(self)
+		if data.faction == data.FACTIONS.WarsawPact:
+			GlobalVars.warsaw_buildings.erase(self)
 		queue_free()
 		GlobalVars.current_money += data.cost / 2
+	if cur_state == STATES.destroy:
+		if data.faction == data.FACTIONS.NATO:
+			GlobalVars.nato_buildings.erase(self)
+		if data.faction == data.FACTIONS.WarsawPact:
+			GlobalVars.warsaw_buildings.erase(self)
+		queue_free()

@@ -8,6 +8,9 @@ var is_rotation_camera: bool
 export var camera_bounds = Vector2()
 onready var cam = $Camera
 
+func _ready() -> void:
+	GlobalVars.current_money = 500
+
 func input(delta):
 	var mov_x = calcute_movement("move_left", "move_right", delta)
 	global_translate(get_global_transform().basis.x.normalized() * -mov_x)
@@ -114,7 +117,6 @@ func _process(delta: float) -> void:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.attack_move
 							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent().global_transform.origin)
-							print(get_node(GlobalVars.global_item_selected).global_transform.origin)
 							angle += 2.0*PI / 12
 			
 	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:

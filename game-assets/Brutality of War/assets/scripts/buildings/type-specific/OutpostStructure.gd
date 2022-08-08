@@ -6,9 +6,6 @@ func _process(delta: float) -> void:
 	if buildings_in_radius.size() > 0:
 		for building in buildings_in_radius:
 			building.get_parent().is_in_territory = true
-	if cur_state == STATES.sell:
-		queue_free()
-		GlobalVars.current_money += data.cost / 2
 		
 func _on_TerritoryArea_body_entered(body: Node) -> void:
 	if body.is_in_group("building-blueprints") and body.get_parent().data.faction == data.faction:
