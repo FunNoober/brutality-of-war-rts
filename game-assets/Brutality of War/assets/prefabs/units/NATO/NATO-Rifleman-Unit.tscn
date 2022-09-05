@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/scripts/units/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/data/unit-data/Prototypes/PrototypeFriendlyInfantryData.tres" type="Resource" id=2]
 [ext_resource path="res://assets/prefabs/projectiles/NATOBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scene-based-3d-models/units/NATO/NATO-Rifleman/NATO-Rifleman.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -10,6 +11,7 @@
 albedo_color = Color( 0, 0.133333, 1, 1 )
 
 [sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 2, 1 )
 
 [sub_resource type="QuadMesh" id=5]
 
@@ -24,7 +26,7 @@ albedo_color = Color( 1, 0, 0, 1 )
 [sub_resource type="SphereShape" id=9]
 radius = 22.0
 
-[node name="PrototypeUnit" type="KinematicBody" groups=["units"]]
+[node name="NATO-Rifleman-Unit" type="KinematicBody" groups=["units"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
@@ -34,16 +36,21 @@ selected_marker = NodePath("MeshInstance2")
 muzzle = NodePath("MeshInstance3/Muzzle")
 shoot_timer = NodePath("ShootTimer")
 vision = NodePath("Vision")
+anim_player = NodePath("NATO-Rifleman")
+feet = NodePath("Feet")
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 2.91764, 0, 0, 0, -1.27534e-07, 2.91764, 0, -2.91764, -1.27534e-07, 0, -0.97598, 0 )
+transform = Transform( 2.91764, 0, 0, 0, -1.27534e-07, 2.91764, 0, -2.91764, -1.27534e-07, 0, 0.02402, 0 )
 visible = false
 mesh = SubResource( 5 )
 material/0 = SubResource( 8 )
@@ -67,5 +74,11 @@ shape = SubResource( 9 )
 [node name="NavigationAgent" type="NavigationAgent" parent="."]
 avoidance_enabled = true
 max_speed = 8.0
+
+[node name="NATO-Rifleman" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.64524, 0 )
+
+[node name="Feet" type="RayCast" parent="."]
+enabled = true
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

@@ -43,11 +43,9 @@ shape = SubResource( 5 )
 
 [node name="Warsaw Turret Base" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
-material/0 = null
 
 [node name="Warsaw Turret Gun" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
-material/0 = null
 
 [node name="Muzzle" type="Position3D" parent="Warsaw Turret Gun"]
 transform = Transform( -0.999999, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -0.999999, -0.0558836, 1.80356, -1 )

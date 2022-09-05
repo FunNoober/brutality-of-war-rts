@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=1]
-[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Barracks/NATO Barracks.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=3]
-[ext_resource path="res://assets/prefabs/buildings/NATO/NATOBarracks.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=5]
+[ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=2]
+[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=3]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Barracks/NATO Barracks.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/prefabs/buildings/NATO/NATOBarracks.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -4, 0, -10, -4, 0, 8, -4, 8, -10, 20, 0, -10, -4, 4, 8, 2.99843, 0, 8, -4, 8, -3.00157, 20, 8, -10, 20, 0, -3.00157, 2.99843, 4, 8, 18.9992, 0, 6.99922, 20, 8, -3.00157, 18.9992, 1.79953, 6.99922 )
@@ -14,12 +14,12 @@ extents = Vector3( 13.5, 6, 10 )
 
 [node name="NATOBarracksBlueprint" type="Spatial"]
 script = ExtResource( 1 )
-building_to_instance = ExtResource( 4 )
-data = ExtResource( 3 )
+building_to_instance = ExtResource( 5 )
+data = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-material_override = ExtResource( 5 )
-mesh = ExtResource( 2 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 4 )
 material/0 = null
 
 [node name="KinematicBody" type="KinematicBody" parent="." groups=["building-blueprints"]]

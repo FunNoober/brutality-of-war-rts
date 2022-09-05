@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/scripts/buildings/type-specific/BarracksStructure.gd" type="Script" id=1]
 [ext_resource path="res://assets/3d-models/buildings/NATO/NATO Barracks/NATO Barracks.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://assets/scripts/user-interface/UnitBuildButton.gd" type="Script" id=3]
-[ext_resource path="res://assets/prefabs/units/PrototypeUnit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/prefabs/units/NATO/NATO-Rifleman-Unit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=5]
 [ext_resource path="res://assets/data/unit-data/Prototypes/PrototypeFriendlyInfantryData.tres" type="Resource" id=6]
 [ext_resource path="res://assets/textures-materials/color-palette.tres" type="Material" id=7]

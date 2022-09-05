@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/scripts/buildings/BuildingBlueprint.gd" type="Script" id=1]
-[ext_resource path="res://assets/prefabs/buildings/NATO/NatoHeavyMachineGunPosition.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/data/building-data/NATO/NATOHeavyMachineGunPosition.tres" type="Resource" id=3]
-[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Heavy Machine Gun Position/NATO Heavy Machine Gun Position.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=5]
+[ext_resource path="res://assets/data/building-data/NATO/NATOHeavyMachineGunPosition.tres" type="Resource" id=2]
+[ext_resource path="res://assets/textures-materials/materials/BlueprintMaterial.tres" type="Material" id=3]
+[ext_resource path="res://assets/prefabs/buildings/NATO/NatoHeavyMachineGunPosition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/3d-models/buildings/NATO/NATO Heavy Machine Gun Position/NATO Heavy Machine Gun Position.obj" type="ArrayMesh" id=5]
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -2.73134, 0.0192975, 3.45821, 2.92702, 3.14135, 3.16974, 2.81449, 3.23091, 3.26007, -2.93119, 3.23762, -1.2226, 3.04428, -0.0507936, -1.35079, 1.31766, -0.0507936, 5.15079, -1.46987, 3.24106, 5.02947, -3.05079, -0.0507936, -1.35016, 2.82783, 3.33609, -1.12664, -2.81105, 3.32242, 3.15881, 2.94262, 0.00681247, 3.17651, 1.5418, 3.31742, 4.892, -1.56133, 0.0193112, 5.01822, -2.92997, 3.13957, 3.1682, 1.31766, 2.3872, -1.35079, -2.94422, 0.00960029, 3.17437, 2.92982, 3.24037, -1.2287, 1.55271, 3.13454, 5.01119, -2.83135, 3.33433, -1.12282, 1.55827, 0.0174655, 5.02231, 2.80744, 3.32413, 3.16011, -1.55632, 3.13342, 5.00819, -1.54546, 3.31619, 4.88975, 1.4637, 3.24081, 5.02959, 2.92982, 3.24037, 3.07234, -2.93119, 3.23762, 3.0709, 1.26658, 3.3364, -1.12721, -2.72257, 3.13343, 3.45319, 1.26841, 3.24081, -1.22959, 2.71766, 3.13399, 3.45379 )
@@ -14,13 +14,13 @@ extents = Vector3( 3.16396, 3, 3.52647 )
 
 [node name="NATOHeavyMachineGunPositionBlueprint" type="Spatial"]
 script = ExtResource( 1 )
-building_to_instance = ExtResource( 2 )
-data = ExtResource( 3 )
+building_to_instance = ExtResource( 4 )
+data = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
-material_override = ExtResource( 5 )
-mesh = ExtResource( 4 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="KinematicBody" type="KinematicBody" parent="." groups=["building-blueprints"]]

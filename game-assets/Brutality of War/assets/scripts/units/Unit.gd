@@ -20,6 +20,7 @@ var next_node_in_path : Vector3
 var command_bonus : bool = false
 var has_applied_bonus : bool = false
 var vel = Vector3.ZERO
+var anim : AnimationPlayer
 
 export var projectile : PackedScene
 export var data : Resource
@@ -27,12 +28,16 @@ export var selected_marker : NodePath
 export var muzzle : NodePath
 export var shoot_timer : NodePath
 export var vision : NodePath
+export var anim_player : NodePath
+export var feet : NodePath
 
 func _ready() -> void:
 	cur_health = data.health
 	get_node(vision).connect("body_entered", self, "vision_entered")
 	$NavigationAgent.connect("velocity_computed", self, "velocity_computed")
 	$NavigationAgent.connect("navigation_finished", self, "navigation_finished")
+	
+	anim = get_node(str(anim_player) + "/AnimationPlayer")
 	
 	
 	if data.faction == data.FACTIONS.NATO:
@@ -58,13 +63,20 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	if cur_health <= 0:
 		state = STATE.dead
+	
+	#global_transform.origin.y = get_node(feet).get_collision_point().y
 	match state:
+		STATE.idle:
+			anim.play("idle")
 		STATE.moving:
 			do_moving(delta)
+			anim.play("run")
 		STATE.attack_move:
 			do_moving(delta)
+			anim.play("run")
 		STATE.attacking:
 			do_attacking()
+			anim.play("idle")
 		STATE.dead:
 			queue_free()
  
