@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/units/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/data/unit-data/Prototypes/PrototypeFriendlyInfantryData.tres" type="Resource" id=2]
@@ -11,17 +11,12 @@
 albedo_color = Color( 0, 0.133333, 1, 1 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1, 2, 1 )
+extents = Vector3( 0.917904, 1, 0.382288 )
 
 [sub_resource type="QuadMesh" id=5]
 
 [sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0, 1, 0.109804, 1 )
-
-[sub_resource type="CubeMesh" id=7]
-
-[sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SphereShape" id=9]
 radius = 22.0
@@ -33,7 +28,7 @@ script = ExtResource( 1 )
 projectile = ExtResource( 3 )
 data = ExtResource( 2 )
 selected_marker = NodePath("MeshInstance2")
-muzzle = NodePath("MeshInstance3/Muzzle")
+muzzle = NodePath("Muzzle")
 shoot_timer = NodePath("ShootTimer")
 vision = NodePath("Vision")
 anim_player = NodePath("NATO-Rifleman")
@@ -46,7 +41,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
@@ -55,13 +50,8 @@ visible = false
 mesh = SubResource( 5 )
 material/0 = SubResource( 8 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="."]
-transform = Transform( -0.1, 0, -8.74228e-08, 0, 0.1, 0, 8.74227e-09, 0, -1, 0, 0, -2 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 10 )
-
-[node name="Muzzle" type="Position3D" parent="MeshInstance3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74228e-07, 0, 1 )
+[node name="Muzzle" type="Position3D" parent="."]
+transform = Transform( -0.203642, 0, -3.0749e-08, 0, 0.203642, 0, 3.0749e-08, 0, -0.203642, 0.307, 1.38832, -0.696821 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.6
@@ -76,7 +66,7 @@ avoidance_enabled = true
 max_speed = 8.0
 
 [node name="NATO-Rifleman" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.64524, 0 )
+transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.14383, 0 )
 
 [node name="Feet" type="RayCast" parent="."]
 enabled = true
