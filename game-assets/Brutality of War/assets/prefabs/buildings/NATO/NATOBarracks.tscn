@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/scripts/user-interface/UnitBuildButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/prefabs/units/NATO/NATO-Rifleman-Unit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=5]
-[ext_resource path="res://assets/data/unit-data/Prototypes/PrototypeFriendlyInfantryData.tres" type="Resource" id=6]
+[ext_resource path="res://assets/data/unit-data/NATO/NATO-Rifleman-Data.tres" type="Resource" id=6]
 [ext_resource path="res://assets/textures-materials/color-palette.tres" type="Material" id=7]
 [ext_resource path="res://assets/themes/MainTheme.tres" type="Theme" id=8]
 

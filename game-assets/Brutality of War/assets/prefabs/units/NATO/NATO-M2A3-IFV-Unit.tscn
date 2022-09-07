@@ -3,19 +3,19 @@
 [ext_resource path="res://assets/scripts/units/TurretVehicle.gd" type="Script" id=1]
 [ext_resource path="res://assets/data/unit-data/NATO/NATO-M113-Data.tres" type="Resource" id=2]
 [ext_resource path="res://assets/prefabs/projectiles/NATOBullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/3d-models/units/NATO/NATO-M113-APC/NATO-M113-APC.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/3d-models/units/NATO/NATO-M2A3-IFV/NATO-M2A3-IFV.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/textures-materials/color-palette.tres" type="Material" id=5]
-[ext_resource path="res://assets/3d-models/units/NATO/NATO-M113-APC/NATO-M113-APC-Gun.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/3d-models/units/NATO/NATO-M2A3-IFV/NATO-M2A3-IFV-Gun.obj" type="ArrayMesh" id=6]
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.82071, 1.32296, 3.38866 )
+extents = Vector3( 2.73302, 1.42369, 4.62756 )
 
 [sub_resource type="PlaneMesh" id=7]
 
 [sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0, 1, 0.109804, 1 )
 
-[node name="NATO M113 APC" type="KinematicBody" groups=["units"]]
+[node name="NATO-M2A3-IFV" type="KinematicBody" groups=["units"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
@@ -23,12 +23,12 @@ data = ExtResource( 2 )
 selection_marker = NodePath("SelectionMarker")
 projectile = ExtResource( 3 )
 shoot_timer = NodePath("ShootTimer")
-muzzle = NodePath("M113-APC/M113-APC-Gun/Muzzle")
-muzzle_transform = NodePath("M113-APC/M113-APC-Gun/Muzzle/Muzzle2")
-gun_base = NodePath("M113-APC/M113-APC-Gun")
+muzzle = NodePath("M2A3-IFV/M2A3-IFV-Gun/Muzzle")
+muzzle_transform = NodePath("M2A3-IFV/M2A3-IFV-Gun/Muzzle/Muzzle2")
+gun_base = NodePath("M2A3-IFV/M2A3-IFV-Gun")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31064, -0.163143 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42468, 0.276368 )
 shape = SubResource( 4 )
 
 [node name="ShootTimer" type="Timer" parent="."]
@@ -41,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5,
 polygon = PoolVector2Array( 15, 15, -15, 15, 0, 0 )
 
 [node name="SelectionMarker" type="MeshInstance" parent="."]
-transform = Transform( 1.96903, 0, 0, 0, 0.760111, 0, 0, 0, 4.14962, 0, 0, 0 )
+transform = Transform( 3.48733, 0, 0, 0, 0.760111, 0, 0, 0, 5.97217, 0, 0, 0 )
 visible = false
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
@@ -49,16 +49,16 @@ material/0 = SubResource( 8 )
 [node name="NavigationAgent" type="NavigationAgent" parent="."]
 avoidance_enabled = true
 
-[node name="M113-APC" type="MeshInstance" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.82964, 0 )
+[node name="M2A3-IFV" type="MeshInstance" parent="."]
+transform = Transform( 0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 2.20247, 0 )
 material_override = ExtResource( 5 )
 mesh = ExtResource( 4 )
 
-[node name="M113-APC-Gun" type="MeshInstance" parent="M113-APC"]
+[node name="M2A3-IFV-Gun" type="MeshInstance" parent="M2A3-IFV"]
 mesh = ExtResource( 6 )
 
-[node name="Muzzle" type="Position3D" parent="M113-APC/M113-APC-Gun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689958, 1.22073, -0.971421 )
+[node name="Muzzle" type="Position3D" parent="M2A3-IFV/M2A3-IFV-Gun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689958, 2.14013, -5.0088 )
 
-[node name="Muzzle2" type="Position3D" parent="M113-APC/M113-APC-Gun/Muzzle"]
+[node name="Muzzle2" type="Position3D" parent="M2A3-IFV/M2A3-IFV-Gun/Muzzle"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, -2.98023e-08, 8.74228e-08, -2.98023e-08, -1, -1.49012e-08, 0, 0 )

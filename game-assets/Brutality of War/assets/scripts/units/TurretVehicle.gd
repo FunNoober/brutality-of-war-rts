@@ -33,6 +33,7 @@ func _ready() -> void:
 	$NavigationAgent.connect("navigation_finished", self, "_on_NavigationAgent_navigation_finished")
 	$NavigationAgent.connect("velocity_computed", self, "_on_NavigationAgent_velocity_computed")
 	cur_health = data.health
+	move_speed = data.mov_speed
 
 func _process(delta: float) -> void:
 	if selected == true and get_node(selection_marker).is_visible_in_tree() == false:

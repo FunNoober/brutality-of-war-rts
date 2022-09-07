@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/NATO-M2A3-IFV.obj-812fe1501c0a6cea243b029120853a6e.mesh"
+
+[deps]
+
+files=[ "res://.import/NATO-M2A3-IFV.obj-812fe1501c0a6cea243b029120853a6e.mesh" ]
+
+source_file="res://assets/3d-models/units/NATO/NATO-M2A3-IFV/NATO-M2A3-IFV.obj"
+dest_files=[ "res://.import/NATO-M2A3-IFV.obj-812fe1501c0a6cea243b029120853a6e.mesh", "res://.import/NATO-M2A3-IFV.obj-812fe1501c0a6cea243b029120853a6e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
