@@ -12,7 +12,7 @@ enum STATE {
 
 var state = STATE.idle
 
-var move_speed : float = 14.0
+var move_speed : float = 10.0
 var selected : bool
 var vel : Vector3
 var target_pos : Vector3
@@ -25,6 +25,8 @@ export var selection_marker : NodePath
 export var projectile : PackedScene
 export var shoot_timer : NodePath
 export var muzzle : NodePath
+export var muzzle_transform : NodePath
+export var gun_base : NodePath
 
 func _ready() -> void:
 	get_node(shoot_timer).connect("timeout", self, "_on_ShootTimer_timeout")
@@ -61,12 +63,9 @@ func do_moving(delta):
 	$NavigationAgent.set_velocity(vel * delta * move_speed)
 			
 func do_attacking():
-	var look_at_pos = target
-	look_at_pos.x = stepify(look_at_pos.x, 0.001)
-	look_at_pos.z = stepify(look_at_pos.z, 0.001)
-	look_at_pos.y = global_transform.origin.y
-	look_at(look_at_pos, Vector3.UP)
-	$Turret/GunBase.look_at(look_at_pos, Vector3.UP)
+	look_at(target, Vector3.UP)
+	get_node(gun_base).rotation_degrees.y = atan2(-target.x, -target.z)
+	get_node(muzzle).look_at(target, Vector3.UP)
 	attack()
 
 func attack_init(new_target):
@@ -77,8 +76,7 @@ func attack():
 		can_attack = false
 		var p : RigidBody = projectile.instance()
 		get_tree().get_root().add_child(p)
-		p.rotation = get_node(muzzle).global_transform.basis.get_euler()
-		p.translation = get_node(muzzle).global_transform.origin
+		p.global_transform = get_node(muzzle_transform).global_transform
 		p.set_direction(25, data.damage)
 		get_node(shoot_timer).start()
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/prefabs/units/NATO/NATO-Rifleman-Unit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://assets/3d-models/maps/Areanas/Areana 1.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://assets/prefabs/units/NATO/NATO Challenger 3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/prefabs/units/NATO/NATO-M113-APC-Unit.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/prefabs/buildings/WarsawPact/WarsawTurret.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOPrefabConstructor.tscn" type="PackedScene" id=8]
@@ -80,7 +80,7 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4118, 0.974361, 214.804 )
 
 [node name="Warsaw Turret" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -81.6234, 0.97436, -67.6055 )
+transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -6.22699, 0.97436, 128.528 )
 
 [node name="Warsaw Turret2" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -84.4072, 0.97436, -88.9552 )
