@@ -18,6 +18,6 @@ Licensed under the Open Font License.
 Designed by CodeMan38, provided by Google Fonts.
 Licensed under the Open Font License.
 
-# Icons
+## Icons
 Designed by colebemis.
 Licensed under the MIT open source license.

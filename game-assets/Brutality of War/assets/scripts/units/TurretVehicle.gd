@@ -20,6 +20,9 @@ var target : Vector3
 var next_node_in_path : Vector3
 var can_attack : bool = true
 var cur_health : int = 100
+var has_spotted_enemy : bool = false
+
+var spotted_body : Spatial
 
 export var selection_marker : NodePath
 export var projectile : PackedScene
@@ -27,9 +30,12 @@ export var shoot_timer : NodePath
 export var muzzle : NodePath
 export var muzzle_transform : NodePath
 export var gun_base : NodePath
+export var vision : NodePath
 
 func _ready() -> void:
 	get_node(shoot_timer).connect("timeout", self, "_on_ShootTimer_timeout")
+	get_node(vision).connect("body_entered", self, "vision_entered")
+	get_node(vision).connect("body_exited", self, "vision_exited")
 	$NavigationAgent.connect("navigation_finished", self, "_on_NavigationAgent_navigation_finished")
 	$NavigationAgent.connect("velocity_computed", self, "_on_NavigationAgent_velocity_computed")
 	cur_health = data.health
@@ -51,6 +57,8 @@ func _physics_process(delta: float) -> void:
 			do_attacking()
 		STATE.dead:
 			pass
+	if has_spotted_enemy:
+		attack_init(spotted_body.global_transform.origin)
 
 func look_while_move():
 	rotation.y = atan2(-vel.x, -vel.z) #using look_at() is inconsistent
@@ -95,3 +103,18 @@ func _on_NavigationAgent_navigation_finished() -> void:
 		state = STATE.attacking
 	if state == STATE.moving:
 		state = STATE.idle
+
+func vision_entered(body):
+	if body.is_in_group("units"):
+		if body.data.faction != data.faction:
+			attack_init(body.global_transform.origin)
+			state = STATE.attacking
+			spotted_body = body
+			has_spotted_enemy = true
+
+func vision_exited(body):
+	if body.is_in_group("units"):
+		if body.data.faction != data.faction:
+			state = STATE.idle
+			spotted_body = null
+			has_spotted_enemy = false

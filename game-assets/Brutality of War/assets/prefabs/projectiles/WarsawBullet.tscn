@@ -4,10 +4,12 @@
 [ext_resource path="res://assets/data/entities/WarsawPact/WarsawBulletData.tres" type="Resource" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
+radius = 0.103
+height = 0.102
 
 [sub_resource type="CapsuleMesh" id=2]
-radius = 0.206
-mid_height = 0.203
+radius = 0.103
+mid_height = 0.102
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 1, 0.862745, 0, 1 )
@@ -28,7 +30,6 @@ script = ExtResource( 1 )
 data = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -37,7 +38,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="RayCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.328388 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.161423 )
 enabled = true
 cast_to = Vector3( 0, -2, 0 )
 collision_mask = 3

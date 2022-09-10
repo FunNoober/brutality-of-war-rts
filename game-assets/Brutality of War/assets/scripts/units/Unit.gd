@@ -22,14 +22,20 @@ var has_applied_bonus : bool = false
 var vel = Vector3.ZERO
 var anim : AnimationPlayer
 
+var spotted_body : Spatial
+var has_spotted_enemy : bool = false
+
 export var projectile : PackedScene
 export var data : Resource
 export var selected_marker : NodePath
 export var muzzle : NodePath
+export var muzzle_transform : NodePath
 export var shoot_timer : NodePath
 export var vision : NodePath
 export var anim_player : NodePath
 export var feet : NodePath
+
+export (float, 0, 5) var bullet_spread
 
 func _ready() -> void:
 	cur_health = data.health
@@ -79,6 +85,9 @@ func _physics_process(delta):
 			anim.play("idle")
 		STATE.dead:
 			queue_free()
+	
+	if has_spotted_enemy:
+		attack_init(spotted_body.global_transform.origin)
  
 			
 func look_while_move():
@@ -94,10 +103,9 @@ func do_moving(delta):
 	
 func do_attacking():
 	var look_at_pos = target
-	look_at_pos.x = stepify(look_at_pos.x, 0.001)
-	look_at_pos.z = stepify(look_at_pos.z, 0.001)
 	look_at_pos.y = global_transform.origin.y
 	look_at(look_at_pos, Vector3.UP)
+	get_node(muzzle).look_at(target, Vector3.UP)
 	attack()
 
 func attack():
@@ -105,8 +113,11 @@ func attack():
 		can_attack = false
 		var p : RigidBody = projectile.instance()
 		get_tree().get_root().add_child(p)
-		p.rotation = get_node(muzzle).global_transform.basis.get_euler()
-		p.translation = get_node(muzzle).global_transform.origin
+		randomize()
+		get_node(muzzle_transform).rotation_degrees.y += rand_range(-1, 1) * bullet_spread
+		get_node(muzzle_transform).rotation_degrees.x += rand_range(-1, 1) * bullet_spread
+		p.global_transform = get_node(muzzle_transform).global_transform
+		p.scale = Vector3(1,1,1)
 		p.set_direction(25, data.damage)
 		get_node(shoot_timer).start(data.attack_rate)
 
@@ -117,10 +128,19 @@ func _on_ShootTimer_timeout() -> void:
 	can_attack = true 
 
 func vision_entered(body: Node) -> void:
-	if body.is_in_group("units") and body.data.faction != data.faction:
-		if state == STATE.idle:
-			move_to(body.global_transform.origin)
-			state = STATE.attack_move
+	if body.is_in_group("units"):
+		if body.data.faction != data.faction:
+			attack_init(body.global_transform.origin)
+			state = STATE.attacking
+			spotted_body = body
+			has_spotted_enemy = true
+
+func vision_exited(body):
+	if body.is_in_group("units"):
+		if body.data.faction != data.faction:
+			state = STATE.idle
+			spotted_body = null
+			has_spotted_enemy = false
 
 func velocity_computed(safe_velocity):
 	move_and_collide(safe_velocity)

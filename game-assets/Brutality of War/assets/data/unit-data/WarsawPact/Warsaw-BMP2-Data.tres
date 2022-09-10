@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/DataScripts/units/UnitData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+faction = 1
+cost = 100
+health = 500
+damage = 10
+attack_range = 20.0
+attack_rate = 0.1
+mov_speed = 8.0

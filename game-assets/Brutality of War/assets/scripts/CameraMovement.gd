@@ -61,8 +61,8 @@ func _process(delta: float) -> void:
 	if GlobalVars.cur_state == GlobalVars.STATES.normal:
 		if GlobalVars.global_item_selected != "" and get_node(GlobalVars.global_item_selected).is_in_group("units") and GlobalVars.mouse_hovering_ui == false:
 			if is_holding_modifier and Input.is_action_just_pressed("confirm_build"):
-				selected_units.append(get_node(GlobalVars.global_item_selected))
 				if get_node(GlobalVars.global_item_selected).data.faction == GlobalVars.player_faction:
+					selected_units.append(get_node(GlobalVars.global_item_selected))
 					get_node(GlobalVars.global_item_selected).selected = true
 				if selected_building != null:
 					selected_building.selected = false
@@ -71,8 +71,8 @@ func _process(delta: float) -> void:
 					if is_instance_valid(unit):
 						unit.selected = false
 				selected_units.clear()
-				selected_units.append(get_node(GlobalVars.global_item_selected))
 				if get_node(GlobalVars.global_item_selected).data.faction == GlobalVars.player_faction:
+					selected_units.append(get_node(GlobalVars.global_item_selected))
 					get_node(GlobalVars.global_item_selected).selected = true
 				if selected_building != null:
 					if is_instance_valid(selected_building):
@@ -117,6 +117,15 @@ func _process(delta: float) -> void:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.attack_move
 							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent().global_transform.origin)
+							angle += 2.0*PI / 12
+			"units":
+				var angle = 0
+				for unit in selected_units:
+					if is_instance_valid(unit):
+						if get_node(GlobalVars.global_item_selected).data.faction != unit.data.faction:
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
+							unit.state = unit.STATE.attack_move
+							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
 							angle += 2.0*PI / 12
 			
 	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:
