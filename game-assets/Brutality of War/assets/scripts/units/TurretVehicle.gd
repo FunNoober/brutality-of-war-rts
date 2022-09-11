@@ -48,6 +48,9 @@ func _process(delta: float) -> void:
 		get_node(selection_marker).hide()
 
 func _physics_process(delta: float) -> void:
+	if cur_health <= 0:
+		state = STATE.dead
+	
 	match state:
 		STATE.moving:
 			do_moving(delta)
@@ -56,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		STATE.attacking:
 			do_attacking()
 		STATE.dead:
-			pass
+			queue_free()
 	if has_spotted_enemy:
 		attack_init(spotted_body.global_transform.origin)
 
@@ -105,12 +108,13 @@ func _on_NavigationAgent_navigation_finished() -> void:
 		state = STATE.idle
 
 func vision_entered(body):
-	if body.is_in_group("units"):
-		if body.data.faction != data.faction:
-			attack_init(body.global_transform.origin)
-			state = STATE.attacking
-			spotted_body = body
-			has_spotted_enemy = true
+	pass
+#	if body.is_in_group("units"):
+#		if body.data.faction != data.faction:
+#			attack_init(body.global_transform.origin)
+#			state = STATE.attacking
+#			spotted_body = body
+#			has_spotted_enemy = true
 
 func vision_exited(body):
 	if body.is_in_group("units"):
