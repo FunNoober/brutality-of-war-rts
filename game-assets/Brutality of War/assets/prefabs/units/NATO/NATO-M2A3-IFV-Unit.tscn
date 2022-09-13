@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/units/TurretVehicle.gd" type="Script" id=1]
 [ext_resource path="res://assets/data/unit-data/NATO/NATO-M113-Data.tres" type="Resource" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/3d-models/units/NATO/NATO-M2A3-IFV/NATO-M2A3-IFV.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/textures-materials/color-palette.tres" type="Material" id=5]
 [ext_resource path="res://assets/3d-models/units/NATO/NATO-M2A3-IFV/NATO-M2A3-IFV-Gun.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://assets/textures-materials/textures/spot-light-texture.png" type="Texture" id=7]
+[ext_resource path="res://assets/prefabs/deco/Light.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 2.73302, 1.42369, 4.62756 )
@@ -15,15 +15,6 @@ extents = Vector3( 2.73302, 1.42369, 4.62756 )
 
 [sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0, 1, 0.109804, 1 )
-
-[sub_resource type="SpatialMaterial" id=9]
-flags_transparent = true
-flags_unshaded = true
-params_cull_mode = 2
-params_billboard_keep_scale = true
-albedo_texture = ExtResource( 7 )
-
-[sub_resource type="QuadMesh" id=10]
 
 [node name="NATO-M2A3-IFV" type="KinematicBody" groups=["units"]]
 collision_layer = 2
@@ -76,48 +67,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0689958, 2.14013, -5.0088 )
 [node name="Muzzle2" type="Position3D" parent="M2A3-IFV/M2A3-IFV-Gun/Muzzle"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, -2.98023e-08, 8.74228e-08, -2.98023e-08, -1, -1.49012e-08, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( -5.11883e-08, -3.79377, 0.781782, 0.873335, -3.72044e-07, 3.81747e-08, 1.71572e-08, 7.61911, 0.389271, -0.704493, 2.57347, -2.26148 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
+[node name="Light" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.500127, -1.72611, 1.26216e-08, 0, -1.50902e-07, -0.577497, 0.288748, 2.98971, -2.18613e-08, -0.673288, 2.57583, -2.3747 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
-transform = Transform( -4.37114e-08, 1.63525e-07, 1, -1.16844e-08, 1, -1.16844e-08, -1, -1.63525e-07, -4.37114e-08, 0, 0, 1.19209e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
-transform = Transform( -0.707107, 1.11858e-07, 0.707107, 1.49012e-07, 1, -7.45058e-09, -0.707107, 2.38419e-07, -0.707107, 0, 0, 2.38419e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
-
-[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance"]
-transform = Transform( 0.707107, 4.20866e-08, 0.707107, 9.68575e-08, 1, -1.49012e-07, -0.707107, 2.38419e-07, 0.707107, 0, 0, 2.38419e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
-
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( -1.68046e-08, 3.84497, 0.778836, 0.873, -3.72028e-07, 3.816e-08, 5.12834e-08, 7.59298, -0.394391, -1.17261, 2.57837, -2.20422 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance2"]
-transform = Transform( -4.37114e-08, 1.63525e-07, 1, -1.16844e-08, 1, -1.16844e-08, -1, -1.63525e-07, -4.37114e-08, 0, 0, 1.19209e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance2"]
-transform = Transform( 0.866025, 1.63525e-07, 0.5, -1.56462e-07, 1, -6.70552e-08, -0.5, -1.19209e-07, 0.866025, 0, 5.96046e-08, 1.19209e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
-
-[node name="MeshInstance4" type="MeshInstance" parent="MeshInstance2"]
-transform = Transform( -0.707107, 1.24762e-07, 0.707107, 2.23517e-08, 1, -1.71363e-07, -0.707107, -2.38419e-07, -0.707107, 0, 5.96046e-08, 1.19209e-07 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
+[node name="Light2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.511518, 1.60239, -1.17169e-08, 0, -1.50902e-07, -0.577497, -0.268052, 3.05781, -2.23592e-08, -1.25025, 2.57583, -2.32164 )

@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 						cam.translation.y -= 1
 						cam.translation.z -= 1
 				BUTTON_WHEEL_DOWN:
-					if cam.translation.y + 1 != 30:
+					if cam.translation.y + 1 != 50:
 						cam.translation.y += 1
 						cam.translation.z += 1
 	
