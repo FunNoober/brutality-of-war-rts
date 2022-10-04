@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/DataScripts/MapData.gd" type="Script" id=1]
+[ext_resource path="res://scenes/maps/SimulationMap001.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+map = ExtResource( 2 )
+map_name = "Sim 1"
+map_description = "Defenders advantage map in the style of simulation"

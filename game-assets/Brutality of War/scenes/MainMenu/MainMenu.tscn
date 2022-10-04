@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/global_vars.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 1 )
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.5
+margin_top = -34.0
+margin_right = 31.5
+margin_bottom = 34.0
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+margin_right = 63.0
+margin_bottom = 20.0
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="Buttons"]
+margin_top = 24.0
+margin_right = 63.0
+margin_bottom = 44.0
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 68.0
+text = "Quit"

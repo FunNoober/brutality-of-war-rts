@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Map_Data",
+"language": "GDScript",
+"path": "res://assets/scripts/DataScripts/MapData.gd"
+}, {
 "base": "KinematicBody",
 "class": "Unit",
 "language": "GDScript",
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/DataScripts/units/UnitData.gd"
 } ]
 _global_script_class_icons={
+"Map_Data": "",
 "Unit": "",
 "entity_data": "",
 "gather_entity_data": "",
@@ -45,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Brutality of War"
-run/main_scene="res://scenes/TestGameScene.tscn"
+run/main_scene="res://scenes/maps/Test.tscn"
 config/icon="res://icon.png"
 
 [autoload]

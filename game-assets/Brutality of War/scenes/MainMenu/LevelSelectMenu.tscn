@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/LevelSelectMenu/LevelButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/data/map-data/SimulationMap001.tres" type="Resource" id=2]
+[ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
+
+[node name="LevelSelectMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="Buttons" type="GridContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 218.0
+columns = 4
+
+[node name="LevelButton" parent="Buttons" instance=ExtResource( 1 )]
+margin_right = 253.0
+map_data = ExtResource( 2 )
+
+[node name="LevelButton2" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 257.0
+margin_right = 510.0
+
+[node name="LevelButton3" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 514.0
+margin_right = 767.0
+
+[node name="LevelButton4" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 771.0
+margin_right = 1024.0
+
+[node name="LevelButton5" parent="Buttons" instance=ExtResource( 1 )]
+margin_top = 74.0
+margin_right = 253.0
+margin_bottom = 144.0
+
+[node name="LevelButton6" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 257.0
+margin_top = 74.0
+margin_right = 510.0
+margin_bottom = 144.0
+
+[node name="LevelButton7" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 514.0
+margin_top = 74.0
+margin_right = 767.0
+margin_bottom = 144.0
+
+[node name="LevelButton8" parent="Buttons" instance=ExtResource( 1 )]
+margin_left = 771.0
+margin_top = 74.0
+margin_right = 1024.0
+margin_bottom = 144.0
+
+[node name="LevelButton9" parent="Buttons" instance=ExtResource( 1 )]
+margin_top = 148.0
+margin_right = 253.0
+margin_bottom = 218.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 654.0
+margin_top = 381.0
+margin_right = 703.0
+margin_bottom = 427.0
