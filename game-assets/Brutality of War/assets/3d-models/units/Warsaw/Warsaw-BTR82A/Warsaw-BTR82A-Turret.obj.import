@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Warsaw-BTR82A-Turret.obj-a79e5c04afae899ce8ca9f10db7effa6.mesh"
+
+[deps]
+
+files=[ "res://.import/Warsaw-BTR82A-Turret.obj-a79e5c04afae899ce8ca9f10db7effa6.mesh" ]
+
+source_file="res://assets/3d-models/units/Warsaw/Warsaw-BTR82A/Warsaw-BTR82A-Turret.obj"
+dest_files=[ "res://.import/Warsaw-BTR82A-Turret.obj-a79e5c04afae899ce8ca9f10db7effa6.mesh", "res://.import/Warsaw-BTR82A-Turret.obj-a79e5c04afae899ce8ca9f10db7effa6.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

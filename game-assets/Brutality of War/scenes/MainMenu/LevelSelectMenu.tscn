@@ -58,9 +58,3 @@ margin_bottom = 144.0
 margin_top = 148.0
 margin_right = 253.0
 margin_bottom = 218.0
-
-[node name="Button" type="Button" parent="."]
-margin_left = 654.0
-margin_top = 381.0
-margin_right = 703.0
-margin_bottom = 427.0

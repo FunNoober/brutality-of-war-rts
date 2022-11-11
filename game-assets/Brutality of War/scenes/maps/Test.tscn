@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/prefabs/CameraPivot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/prefabs/units/NATO/NATO-M2A3-IFV-Unit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/prefabs/buildings/NATO/NATOOutpost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/3d-models/maps/Areanas/Areana 1.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://assets/textures-materials/materials/PBR/Tiles047.tres" type="Material" id=8]
@@ -54,6 +55,9 @@ collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Areana 1/StaticBody"]
 shape = SubResource( 2 )
+
+[node name="NATO-M2A3-IFV" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3435, 1.02593, 189.132 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.963094, -0.260595, 0.067385, 0.15364, 0.737784, 0.65732, -0.22101, -0.622708, 0.750593, 0, 3, 0 )

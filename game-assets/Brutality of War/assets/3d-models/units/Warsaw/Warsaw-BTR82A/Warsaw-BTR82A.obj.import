@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Warsaw-BTR82A.obj-f7d49e8a694ff74c2dd074fbc3e70e45.mesh"
+
+[deps]
+
+files=[ "res://.import/Warsaw-BTR82A.obj-f7d49e8a694ff74c2dd074fbc3e70e45.mesh" ]
+
+source_file="res://assets/3d-models/units/Warsaw/Warsaw-BTR82A/Warsaw-BTR82A.obj"
+dest_files=[ "res://.import/Warsaw-BTR82A.obj-f7d49e8a694ff74c2dd074fbc3e70e45.mesh", "res://.import/Warsaw-BTR82A.obj-f7d49e8a694ff74c2dd074fbc3e70e45.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/scripts/global_vars.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=2]
+[ext_resource path="res://scenes/MainMenu/LevelSelectMenu.tscn" type="PackedScene" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_left = 0.5
@@ -27,6 +29,8 @@ margin_bottom = 34.0
 margin_right = 63.0
 margin_bottom = 20.0
 text = "Play"
+script = ExtResource( 2 )
+scene = ExtResource( 3 )
 
 [node name="SettingsButton" type="Button" parent="Buttons"]
 margin_top = 24.0
