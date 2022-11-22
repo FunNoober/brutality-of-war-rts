@@ -109,12 +109,12 @@ func _on_NavigationAgent_navigation_finished() -> void:
 
 func vision_entered(body):
 	pass
-#	if body.is_in_group("units"):
-#		if body.data.faction != data.faction:
-#			attack_init(body.global_transform.origin)
-#			state = STATE.attacking
-#			spotted_body = body
-#			has_spotted_enemy = true
+	if body.is_in_group("units") and state == STATE.idle:
+		if body.data.faction != data.faction:
+			attack_init(body.global_transform.origin)
+			state = STATE.attacking
+			spotted_body = body
+			has_spotted_enemy = true
 
 func vision_exited(body):
 	if body.is_in_group("units"):

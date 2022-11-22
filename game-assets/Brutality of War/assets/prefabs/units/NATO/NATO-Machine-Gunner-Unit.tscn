@@ -1,15 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scripts/units/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/data/unit-data/NATO/NATO-Machine-Gunner-Data.tres" type="Resource" id=2]
 [ext_resource path="res://assets/prefabs/projectiles/NATOBullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/scene-based-3d-models/units/NATO/NATO-Rifleman/NATO-Rifleman.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scene-based-3d-models/units/NATO/NATO-Rifleman/NATO-Machine-Gunner.tscn" type="PackedScene" id=5]
-
-[sub_resource type="CubeMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0, 0.133333, 1, 1 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.917904, 1, 0.382288 )
@@ -27,17 +21,12 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
 data = ExtResource( 2 )
+selection_marker = NodePath("MeshInstance2")
 projectile = ExtResource( 3 )
-muzzle = NodePath("Muzzle")
-selected_visual = NodePath("MeshInstance2")
-vision = NodePath("Vision")
 shoot_timer = NodePath("ShootTimer")
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-visible = false
-mesh = SubResource( 1 )
-material/0 = SubResource( 6 )
+muzzle = NodePath("Muzzle")
+muzzle_transform = NodePath("Muzzle/Muzzle2")
+vision = NodePath("Vision")
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -69,14 +58,5 @@ shape = SubResource( 9 )
 avoidance_enabled = true
 max_speed = 8.0
 
-[node name="NATO-Rifleman" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.14383, 0 )
-visible = false
-
-[node name="Feet" type="RayCast" parent="."]
-enabled = true
-
 [node name="NATO-Machine-Gunner" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.15028, 0 )
-
-[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
