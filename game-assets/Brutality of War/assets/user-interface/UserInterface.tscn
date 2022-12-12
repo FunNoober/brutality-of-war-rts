@@ -47,16 +47,16 @@ anchor_bottom = 1.0
 margin_right = 143.0
 
 [node name="SellModeButton" type="CheckButton" parent="Control/Buttons"]
-margin_right = 179.0
-margin_bottom = 40.0
+margin_right = 143.0
+margin_bottom = 32.0
 text = "Sell Mode"
 script = ExtResource( 4 )
 
 [node name="SupplyDepotButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 44.0
-margin_right = 194.0
-margin_bottom = 57.0
+margin_top = 36.0
+margin_right = 143.0
+margin_bottom = 61.0
 text = "Supply Depot"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 2 )
@@ -64,9 +64,9 @@ building_data = ExtResource( 12 )
 
 [node name="OutpostButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 44.0
-margin_right = 194.0
-margin_bottom = 57.0
+margin_top = 36.0
+margin_right = 143.0
+margin_bottom = 61.0
 text = "Outpost"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 5 )
@@ -74,9 +74,9 @@ building_data = ExtResource( 13 )
 
 [node name="BarracksButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 44.0
-margin_right = 194.0
-margin_bottom = 57.0
+margin_top = 36.0
+margin_right = 143.0
+margin_bottom = 61.0
 text = "Barracks"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 6 )
@@ -84,9 +84,9 @@ building_data = ExtResource( 11 )
 
 [node name="PowerPlantButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 44.0
-margin_right = 194.0
-margin_bottom = 57.0
+margin_top = 36.0
+margin_right = 143.0
+margin_bottom = 61.0
 text = "Power Plant"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 7 )
@@ -94,9 +94,9 @@ building_data = ExtResource( 10 )
 
 [node name="HeavyMachineGunPositionButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 44.0
-margin_right = 194.0
-margin_bottom = 57.0
+margin_top = 36.0
+margin_right = 216.0
+margin_bottom = 61.0
 text = "Heavy Machine Gun Position"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 8 )
@@ -104,9 +104,9 @@ building_data = ExtResource( 9 )
 
 [node name="CommandAndControlCenterButton" type="Button" parent="Control/Buttons"]
 visible = false
-margin_top = 61.0
-margin_right = 194.0
-margin_bottom = 74.0
+margin_top = 65.0
+margin_right = 221.0
+margin_bottom = 90.0
 text = "Command and Control Center"
 script = ExtResource( 1 )
 building_blueprint = ExtResource( 14 )
@@ -139,10 +139,10 @@ size_flags_vertical = 3
 
 [node name="TimescaleSlider" type="HBoxContainer" parent="Debug/DebugPopup/Control"]
 margin_right = 239.0
-margin_bottom = 16.0
+margin_bottom = 19.0
 
 [node name="TimerscaleEdit" type="HSlider" parent="Debug/DebugPopup/Control/TimescaleSlider"]
-margin_right = 136.0
+margin_right = 162.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
@@ -151,35 +151,34 @@ value = 1.0
 tick_count = 10
 
 [node name="TimescaleLabel" type="Label" parent="Debug/DebugPopup/Control/TimescaleSlider"]
-margin_left = 140.0
-margin_top = 2.0
+margin_left = 166.0
 margin_right = 239.0
-margin_bottom = 13.0
+margin_bottom = 19.0
 text = "Timescale"
 
 [node name="Add1000MoneyButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 20.0
+margin_top = 23.0
 margin_right = 239.0
-margin_bottom = 37.0
+margin_bottom = 48.0
 text = "+ $1000"
 
 [node name="SetMoney" type="SpinBox" parent="Debug/DebugPopup/Control"]
-margin_top = 41.0
+margin_top = 52.0
 margin_right = 239.0
-margin_bottom = 62.0
+margin_bottom = 81.0
 max_value = 100000.0
 prefix = "Money ="
 
 [node name="LoseGameButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 66.0
+margin_top = 85.0
 margin_right = 239.0
-margin_bottom = 83.0
+margin_bottom = 110.0
 text = "Instant Lose Match"
 
 [node name="WinGameButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 87.0
+margin_top = 114.0
 margin_right = 239.0
-margin_bottom = 104.0
+margin_bottom = 139.0
 text = "Instant Win Match"
 
 [connection signal="toggled" from="Control/Buttons/SellModeButton" to="Control/Buttons/SellModeButton" method="_on_SellModeButton_toggled"]

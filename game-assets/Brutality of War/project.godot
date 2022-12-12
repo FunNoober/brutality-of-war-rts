@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Brutality of War"
-run/main_scene="res://scenes/maps/Test.tscn"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

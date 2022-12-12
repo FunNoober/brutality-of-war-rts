@@ -1,60 +1,71 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/LevelSelectMenu/LevelButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/data/map-data/SimulationMap001.tres" type="Resource" id=2]
 [ext_resource path="res://assets/scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=4]
 
 [node name="LevelSelectMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 4 )
 script = ExtResource( 3 )
 
-[node name="Buttons" type="GridContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
-margin_bottom = 218.0
-columns = 4
+anchor_bottom = 1.0
 
-[node name="LevelButton" parent="Buttons" instance=ExtResource( 1 )]
-margin_right = 253.0
+[node name="Buttons" type="GridContainer" parent="ScrollContainer"]
+margin_right = 989.0
+margin_bottom = 224.0
+columns = 3
+
+[node name="LevelButton" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_right = 327.0
+margin_bottom = 72.0
 map_data = ExtResource( 2 )
 
-[node name="LevelButton2" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 257.0
-margin_right = 510.0
+[node name="LevelButton2" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 331.0
+margin_right = 658.0
+margin_bottom = 72.0
 
-[node name="LevelButton3" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 514.0
-margin_right = 767.0
+[node name="LevelButton3" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 662.0
+margin_right = 989.0
+margin_bottom = 72.0
 
-[node name="LevelButton4" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 771.0
-margin_right = 1024.0
+[node name="LevelButton4" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_top = 76.0
+margin_right = 327.0
+margin_bottom = 148.0
 
-[node name="LevelButton5" parent="Buttons" instance=ExtResource( 1 )]
-margin_top = 74.0
-margin_right = 253.0
-margin_bottom = 144.0
+[node name="LevelButton5" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 331.0
+margin_top = 76.0
+margin_right = 658.0
+margin_bottom = 148.0
 
-[node name="LevelButton6" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 257.0
-margin_top = 74.0
-margin_right = 510.0
-margin_bottom = 144.0
+[node name="LevelButton6" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 662.0
+margin_top = 76.0
+margin_right = 989.0
+margin_bottom = 148.0
 
-[node name="LevelButton7" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 514.0
-margin_top = 74.0
-margin_right = 767.0
-margin_bottom = 144.0
+[node name="LevelButton7" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_right = 327.0
+margin_bottom = 224.0
 
-[node name="LevelButton8" parent="Buttons" instance=ExtResource( 1 )]
-margin_left = 771.0
-margin_top = 74.0
-margin_right = 1024.0
-margin_bottom = 144.0
+[node name="LevelButton8" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 331.0
+margin_top = 152.0
+margin_right = 658.0
+margin_bottom = 224.0
 
-[node name="LevelButton9" parent="Buttons" instance=ExtResource( 1 )]
-margin_top = 148.0
-margin_right = 253.0
-margin_bottom = 218.0
+[node name="LevelButton9" parent="ScrollContainer/Buttons" instance=ExtResource( 1 )]
+margin_left = 662.0
+margin_top = 152.0
+margin_right = 989.0
+margin_bottom = 224.0

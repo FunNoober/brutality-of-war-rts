@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/scripts/user-interface/SettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=3]
+[ext_resource path="res://scenes/MainMenu/MainMenu.tscn" type="PackedScene" id=4]
+
+[node name="SettingsMenu" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 356, 175 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 559.0
+rect_pivot_offset = Vector2( -638, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AudioSettings" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 510.0
+margin_bottom = 559.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/AudioSettings"]
+margin_right = 510.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "Audio"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AudioSettings"]
+margin_top = 33.0
+margin_right = 510.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="HBoxContainer/AudioSettings/HBoxContainer"]
+margin_right = 22.0
+margin_bottom = 29.0
+text = "UI"
+
+[node name="UISound" type="HSlider" parent="HBoxContainer/AudioSettings/HBoxContainer"]
+margin_left = 26.0
+margin_right = 510.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 6.0
+
+[node name="VideoSettings" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 559.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VideoSettings"]
+margin_right = 510.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "Video"
+align = 1
+valign = 1
+
+[node name="PlayButton" type="Button" parent="."]
+margin_top = 563.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+text = "Main Menu"
+script = ExtResource( 3 )
+scene = ExtResource( 4 )

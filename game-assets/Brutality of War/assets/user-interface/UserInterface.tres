@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://assets/fonts/Roboto-Light.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0313726, 0.45098, 0.780392, 0.356863 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0352941, 0.517647, 0.890196, 0.356863 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0313726, 0.454902, 0.784314, 0.356863 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[resource]
+default_font = SubResource( 1 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 4 )

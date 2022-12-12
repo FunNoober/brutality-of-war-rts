@@ -7,6 +7,11 @@ signal build_pressed(to_spawn, u_data)
 
 func _ready() -> void:
 	connect("pressed", self, "button_pressed")
+	var sound_player = AudioStreamPlayer.new()
+	sound_player.stream = load("res://assets/sounds/ui/ui_hover_001.ogg")
+	sound_player.bus = "UI Sound"
+	sound_player.name = "AudioStreamPlayer"
+	add_child(sound_player)
 	
 func _process(delta: float) -> void:
 	disabled = (unit_data.cost >= GlobalVars.current_money)
@@ -16,6 +21,7 @@ func button_pressed():
 
 func _on_Button_mouse_entered() -> void:
 	GlobalVars.mouse_hovering_ui = true
+	$AudioStreamPlayer.play()
 
 func _on_Button_mouse_exited() -> void:
 	GlobalVars.mouse_hovering_ui = false

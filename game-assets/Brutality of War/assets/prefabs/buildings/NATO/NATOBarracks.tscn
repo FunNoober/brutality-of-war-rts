@@ -48,7 +48,7 @@ margin_left = -166.0
 alignment = 1
 
 [node name="RiflemanButton" type="Button" parent="CanvasLayer/Control/Toolbar"]
-margin_top = 281.0
+margin_top = 263.0
 margin_right = 166.0
 margin_bottom = 298.0
 text = "Rifleman"
@@ -59,7 +59,7 @@ unit_data = ExtResource( 6 )
 [node name="MachineGunnerButton" type="Button" parent="CanvasLayer/Control/Toolbar"]
 margin_top = 302.0
 margin_right = 166.0
-margin_bottom = 319.0
+margin_bottom = 337.0
 text = "Machine Gunner"
 script = ExtResource( 3 )
 unit_to_spawn = ExtResource( 10 )
