@@ -2,7 +2,7 @@ extends Button
 
 class_name Scene_Button
 
-export var scene : PackedScene
+export var scene_name : String
 
 func _ready() -> void:
 	connect("pressed", self, "on_button_pressed")
@@ -14,7 +14,7 @@ func _ready() -> void:
 	add_child(sound_player)
 
 func on_button_pressed():
-	get_tree().change_scene_to(scene)
+	get_tree().change_scene(scene_name)
 
 func mouse_entered():
 	$AudioStreamPlayer.play()
