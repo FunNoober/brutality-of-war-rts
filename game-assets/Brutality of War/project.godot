@@ -60,6 +60,10 @@ config/name="Brutality of War"
 run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://SoundController.tres"
+
 [autoload]
 
 GlobalVars="*res://assets/scripts/global_vars.gd"

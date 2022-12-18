@@ -5,7 +5,10 @@ var selected_units = []
 var selected_building : Spatial
 var is_holding_modifier : bool
 var is_rotation_camera: bool
-export var camera_bounds = Vector2()
+export var camera_bound_x = 0.0
+export var camera_bound_negative_x = 0.0
+export var camera_bound_z = 0.0
+export var camera_bound_negative_z = 0.0
 onready var cam = $Camera
 
 func _ready() -> void:
@@ -45,8 +48,8 @@ func calcute_movement(action_one : String, action_two : String, delta : float):
 	
 func _process(delta: float) -> void:
 	input(delta)
-	transform.origin.x = clamp(transform.origin.x, -camera_bounds.x, camera_bounds.x)
-	transform.origin.z = clamp(transform.origin.z, -camera_bounds.y, camera_bounds.y)
+	transform.origin.x = clamp(transform.origin.x, camera_bound_negative_x, camera_bound_x)
+	transform.origin.z = clamp(transform.origin.z, camera_bound_negative_z, camera_bound_z)
 	
 	match GlobalVars.cur_state:
 		GlobalVars.STATES.build_mode:

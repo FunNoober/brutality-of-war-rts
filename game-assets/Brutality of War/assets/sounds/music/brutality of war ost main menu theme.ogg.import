@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/brutality of war ost main menu theme.ogg-ad91659931d9887013cc44131986250f.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/brutality of war ost main menu theme.ogg"
+dest_files=[ "res://.import/brutality of war ost main menu theme.ogg-ad91659931d9887013cc44131986250f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

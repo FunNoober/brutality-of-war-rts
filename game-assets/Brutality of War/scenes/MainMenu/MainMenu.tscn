@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/music/brutality of war ost main menu theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -81,3 +82,9 @@ text = "BRUTALITY OF WAR"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"

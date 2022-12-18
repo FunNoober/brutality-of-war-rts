@@ -27,8 +27,11 @@ script = ExtResource( 1 )
 game = true
 
 [node name="CameraPivot" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52782, 1.02593, 435.857 )
-camera_bounds = Vector2( 205, 463 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4889, 1.02593, 214.287 )
+camera_bound_x = 207.62
+camera_bound_negative_x = -207.62
+camera_bound_z = 247.708
+camera_bound_negative_z = -241.056
 
 [node name="Navigation" type="Navigation" parent="."]
 navigation_layers = 3

@@ -3,8 +3,10 @@ extends Control
 func _process(delta: float) -> void:
 	var ui_sound = AudioServer.get_bus_index("UI Sound")
 	var master_sound = AudioServer.get_bus_index("Master")
+	var music_sound = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(1, $HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/UISound.value)
 	AudioServer.set_bus_volume_db(0, $HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/MasterSound.value)
+	AudioServer.set_bus_volume_db(music_sound, $HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/MusicSound.value)
 
 func _on_OptionButton_item_selected(index: int) -> void:
 	if index == 0:
