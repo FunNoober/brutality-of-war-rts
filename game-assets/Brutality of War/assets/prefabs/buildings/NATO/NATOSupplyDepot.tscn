@@ -20,4 +20,3 @@ shape = SubResource( 1 )
 
 [node name="NATO Supply Depot" type="MeshInstance" parent="."]
 mesh = ExtResource( 3 )
-material/0 = null

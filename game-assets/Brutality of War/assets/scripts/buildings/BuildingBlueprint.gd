@@ -15,6 +15,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	frames_since_spawned += 1
+		
 	if just_spawned == false:
 		GlobalVars.cur_state = GlobalVars.STATES.build_mode
 		if Input.is_action_pressed("control"):
@@ -46,7 +47,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("cancel_build"):
 			GlobalVars.cur_state = GlobalVars.STATES.normal
 			queue_free()
-	if frames_since_spawned >= 5:
+	
+	if frames_since_spawned >= 120:
 		just_spawned = false
 
 func _input(event: InputEvent) -> void:
@@ -60,9 +62,9 @@ func _input(event: InputEvent) -> void:
 					rotation_degrees.y -= 15
 
 func _on_Area_body_entered(body: Node) -> void:
-	if body.is_in_group("units") or body.is_in_group("buildings"):
+	if body.is_in_group("units") or body.is_in_group("buildings") or body.is_in_group("terrain"):
 		colliding_objects.append(body)
 
 func _on_Area_body_exited(body: Node) -> void:
-	if body.is_in_group("units") or body.is_in_group("buildings"):
+	if body.is_in_group("units") or body.is_in_group("buildings") or body.is_in_group("terrain"):
 		colliding_objects.erase(body)

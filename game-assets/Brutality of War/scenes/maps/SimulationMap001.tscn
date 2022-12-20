@@ -57,7 +57,7 @@ transform = Transform( 17.5392, 0, 0, 0, 17.5392, 0, 0, 0, 17.5392, 0, 5.75982, 
 mesh = ExtResource( 5 )
 skeleton = NodePath("../../..")
 
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Areana 1"]
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Areana 1" groups=["terrain"]]
 collision_layer = 3
 collision_mask = 3
 

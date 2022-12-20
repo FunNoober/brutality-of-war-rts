@@ -13,3 +13,12 @@ func set_data():
 
 func _on_PlayButton_pressed() -> void:
 	get_tree().change_scene_to(d.map)
+
+
+func _on_InfinteMoneyBox_pressed() -> void:
+	#TODO: Connect this to global_vars to it actually effects gameplay
+	pass
+
+func _on_InstantBuildBox_pressed() -> void:
+	#TODO: Connect this to global_vars to it actually effects gameplay
+	pass
