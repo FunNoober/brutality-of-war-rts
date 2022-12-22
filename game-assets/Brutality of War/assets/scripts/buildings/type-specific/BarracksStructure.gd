@@ -17,10 +17,15 @@ func _process(delta: float) -> void:
 			$CanvasLayer/Control.show()
 		
 		if queue.size() > 0 and is_constructing == false:
-			if has_power:
-				$SpawnTimer.start(queue_data[0].cost / 60)
-			else:
-				$SpawnTimer.start(queue_data[0].cost / 60 * 2)
+			if has_power and GlobalVars.instant_build == false:
+				$SpawnTimer.start(queue_data[0].time_to_build)
+			if has_power == false and GlobalVars.instant_build == false:
+				$SpawnTimer.start(queue_data[0].time_to_build * 2)
+				
+			if has_power and GlobalVars.instant_build == true:
+				$SpawnTimer.start(1)
+			if has_power == false and GlobalVars.instant_build == true:
+				$SpawnTimer.start(1)
 			is_constructing = true
 	if cur_state == STATES.sell:
 		queue_free()

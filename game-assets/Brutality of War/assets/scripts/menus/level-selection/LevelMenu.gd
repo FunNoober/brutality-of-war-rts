@@ -14,11 +14,15 @@ func set_data():
 func _on_PlayButton_pressed() -> void:
 	get_tree().change_scene_to(d.map)
 
+func _on_InfinteMoneyBox_toggled(button_pressed: bool) -> void:
+	GlobalVars.infinite_money = button_pressed
 
-func _on_InfinteMoneyBox_pressed() -> void:
-	#TODO: Connect this to global_vars to it actually effects gameplay
-	pass
+func _on_InstantBuildBox_toggled(button_pressed: bool) -> void:
+	GlobalVars.instant_build = button_pressed
+	
+func _on_FactionSelectOption_item_selected(index: int) -> void:
+	if index == 0:
+		GlobalVars.player_faction = 0
+	elif index == 1:
+		GlobalVars.player_faction = 1
 
-func _on_InstantBuildBox_pressed() -> void:
-	#TODO: Connect this to global_vars to it actually effects gameplay
-	pass

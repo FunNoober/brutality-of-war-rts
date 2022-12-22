@@ -11,3 +11,4 @@ damage = 5
 attack_range = 20.0
 attack_rate = 0.6
 mov_speed = 8.0
+time_to_build = 12.0

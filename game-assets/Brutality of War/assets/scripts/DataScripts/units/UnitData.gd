@@ -4,3 +4,4 @@ class_name unit_data
 export var attack_range : float = 20
 export var attack_rate : float = 0.6
 export var mov_speed : float = 8.0
+export var time_to_build : float = 1.0

@@ -3,7 +3,7 @@ extends Control
 var is_visible : bool = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("enable_debug"):
+	if Input.is_action_just_pressed("enable_debug") and GlobalVars.cheat_menu_enabled == true:
 		if is_visible == true:
 			is_visible = false
 			$DebugPopup.hide()

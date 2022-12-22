@@ -68,7 +68,6 @@ func _on_OptionButton2_item_selected(index: int) -> void:
 	save()
 
 func _on_FOVSlider_value_changed(value: float) -> void:
-	#TODO: Save FOV to JSON file then the camera loads from this JSON
 	data_to_store.fov = value
 	save()
 
@@ -102,3 +101,6 @@ func _on_MusicSound_value_changed(value: float) -> void:
 	music_volume = value
 	data_to_store.music_sound = value
 	save()
+
+func _on_CheatMenuButton_toggled(button_pressed: bool) -> void:
+	GlobalVars.cheat_menu_enabled = button_pressed

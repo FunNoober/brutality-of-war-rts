@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 1 )
 map = ExtResource( 2 )
-map_name = "Sim 1"
-map_description = "Defenders advantage map in the style of simulation"
+map_name = "Simulation 1"
+map_description = "Offenders advantage map in the style of simulation"

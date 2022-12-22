@@ -205,6 +205,7 @@ valign = 1
 margin_top = 33.0
 margin_right = 424.0
 margin_bottom = 70.0
+hint_tooltip = "Press F1 to enable in game"
 text = "Cheat Menu"
 flat = true
 
@@ -225,3 +226,4 @@ scene_name = "res://scenes/MainMenu/MainMenu.tscn"
 [connection signal="item_selected" from="HBoxContainer/VideoSettings/WindowedOption" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/VideoSettings/VsyncOption" to="." method="_on_OptionButton2_item_selected"]
 [connection signal="value_changed" from="HBoxContainer/VideoSettings/HBoxContainer/FOVSlider" to="." method="_on_FOVSlider_value_changed"]
+[connection signal="toggled" from="HBoxContainer/GameSettings/CheatMenuButton" to="." method="_on_CheatMenuButton_toggled"]

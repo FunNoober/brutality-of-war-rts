@@ -22,6 +22,10 @@ var player_faction : int = 0
 
 var map_data : Resource
 
+var infinite_money : bool = false
+var instant_build : bool = false
+var cheat_menu_enabled : bool = false
+
 enum STATES {
 	normal,
 	build_mode,
@@ -72,6 +76,8 @@ func _ready() -> void:
 			OS.set_use_vsync(true)
 
 func _process(delta: float) -> void:
+	if infinite_money == true:
+		current_money = 999999
 	global_delta = delta
 	if is_playing:
 		if player_faction == 0: # if player is nato
@@ -85,10 +91,10 @@ func _process(delta: float) -> void:
 			if nato_buildings.size() <= 0:
 				completion_mode = COMPLETE_MODES.victory
 		if completion_mode == COMPLETE_MODES.defeat:
-			get_tree().reload_current_scene()
+			get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
 			cur_state = STATES.normal
 			completion_mode = null
 		if completion_mode == COMPLETE_MODES.victory:
-			get_tree().reload_current_scene()
+			get_tree().change_scene("res://scenes/MainMenu/MainMenu.tscn")
 			cur_state = STATES.normal
 			completion_mode = null
