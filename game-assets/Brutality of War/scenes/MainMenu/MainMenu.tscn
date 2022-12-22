@@ -73,7 +73,6 @@ text = "Quit"
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -259.5

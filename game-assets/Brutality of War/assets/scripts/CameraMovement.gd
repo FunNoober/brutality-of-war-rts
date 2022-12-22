@@ -13,6 +13,12 @@ onready var cam = $Camera
 
 func _ready() -> void:
 	GlobalVars.current_money = 500
+	var f = File.new()
+	if f.file_exists("user://settings.brutalityofwar"):
+		f.open("user://settings.brutalityofwar", f.READ)
+		var contents_as_string = f.get_as_text()
+		var contents_as_dictionary = parse_json(contents_as_string)
+		$Camera.fov = contents_as_dictionary.fov
 
 func input(delta):
 	var mov_x = calcute_movement("move_left", "move_right", delta)

@@ -217,6 +217,11 @@ text = "Main Menu"
 script = ExtResource( 3 )
 scene_name = "res://scenes/MainMenu/MainMenu.tscn"
 
+[connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/MasterSound" to="." method="_on_MasterSound_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/UISound" to="." method="_on_UISound_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/SFXSound" to="." method="_on_SFXSound_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/AnnouncerSound" to="." method="_on_AnnouncerSound_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/MusicSound" to="." method="_on_MusicSound_value_changed"]
 [connection signal="item_selected" from="HBoxContainer/VideoSettings/WindowedOption" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/VideoSettings/VsyncOption" to="." method="_on_OptionButton2_item_selected"]
 [connection signal="value_changed" from="HBoxContainer/VideoSettings/HBoxContainer/FOVSlider" to="." method="_on_FOVSlider_value_changed"]

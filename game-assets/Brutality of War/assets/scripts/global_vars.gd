@@ -45,6 +45,32 @@ var cur_mode = MODES.defensive
 
 var global_delta
 
+func _ready() -> void:
+	var master_bus = AudioServer.get_bus_index("Master")
+	var ui_bus = AudioServer.get_bus_index("UI Sound")
+	var music_bus = AudioServer.get_bus_index("Music")
+	var sfx_bus = AudioServer.get_bus_index("SFX")
+	var announcer_bus = AudioServer.get_bus_index("Announcer")
+	var f = File.new()
+	if f.file_exists("user://settings.brutalityofwar"):
+		f.open("user://settings.brutalityofwar", f.READ)
+		var contents_as_string = f.get_as_text()
+		var contents_as_dictionary = parse_json(contents_as_string)
+		AudioServer.set_bus_volume_db(master_bus, contents_as_dictionary.master_volume)
+		AudioServer.set_bus_volume_db(ui_bus, contents_as_dictionary.ui_sound)
+		AudioServer.set_bus_volume_db(music_bus, contents_as_dictionary.music_sound)
+		AudioServer.set_bus_volume_db(sfx_bus, contents_as_dictionary.sfx_sound)
+		AudioServer.set_bus_volume_db(announcer_bus, contents_as_dictionary.announcer_sound)
+		if contents_as_dictionary.windowed == 0:
+			OS.window_fullscreen = false
+		elif contents_as_dictionary.windowed == 1:
+			OS.window_fullscreen = true
+			
+		if contents_as_dictionary.vsync == 0:
+			OS.set_use_vsync(false)
+		elif contents_as_dictionary.vsync == 1:
+			OS.set_use_vsync(true)
+
 func _process(delta: float) -> void:
 	global_delta = delta
 	if is_playing:
