@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Simulation002Wall.obj-15867f39a249dace1ecc7db70c713211.mesh"
+
+[deps]
+
+files=[ "res://.import/Simulation002Wall.obj-15867f39a249dace1ecc7db70c713211.mesh" ]
+
+source_file="res://assets/3d-models/maps/SImulation/Simulation002/Simulation002Wall.obj"
+dest_files=[ "res://.import/Simulation002Wall.obj-15867f39a249dace1ecc7db70c713211.mesh", "res://.import/Simulation002Wall.obj-15867f39a249dace1ecc7db70c713211.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
