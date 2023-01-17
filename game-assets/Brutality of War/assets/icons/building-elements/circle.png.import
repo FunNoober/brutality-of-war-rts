@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/arrow-left-base.png-0e7b090958054de445695edca99d3db1.stex"
+path="res://.import/circle.png-7440b7cbc39217bdcd90f5b3ed0c16d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/arrow-left-base.png"
-dest_files=[ "res://.import/arrow-left-base.png-0e7b090958054de445695edca99d3db1.stex" ]
+source_file="res://assets/icons/building-elements/circle.png"
+dest_files=[ "res://.import/circle.png-7440b7cbc39217bdcd90f5b3ed0c16d7.stex" ]
 
 [params]
 

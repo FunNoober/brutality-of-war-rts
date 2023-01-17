@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/music/brutality of war ost main menu theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=4]
 [ext_resource path="res://assets/scripts/user-interface/QuitButton.gd" type="Script" id=5]
+[ext_resource path="res://assets/textures-materials/textures/Settings_Background.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -25,10 +26,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 autoplay = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.215686, 0.215686, 0.215686, 0.498039 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 6 )
+expand = true
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -44,12 +47,12 @@ anchor_bottom = 1.0
 margin_top = -119.0
 margin_right = 294.0
 
-[node name="PlayButton" type="Button" parent="Control/Buttons"]
+[node name="WaveDefenseButton" type="Button" parent="Control/Buttons"]
 margin_right = 294.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Play"
+text = "Wave Defense"
 script = ExtResource( 2 )
 scene_name = "res://scenes/MainMenu/LevelSelectMenu.tscn"
 

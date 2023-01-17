@@ -114,28 +114,29 @@ func _process(delta: float) -> void:
 						if selected_units.size() >= 2:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
 							unit.state = unit.STATE.moving
-							angle += 2.0*PI / 12
+							angle += 2.0*PI / 48
 						else:
 							unit.move_to(GlobalVars.global_mouse_pos)
-							unit.state = unit.STATE.moving
+							unit.state = unit.STATE.move
 			"buildings":
 				var angle = 0
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
-							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
-							unit.state = unit.STATE.attack_move
-							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent().global_transform.origin)
-							angle += 2.0*PI / 12
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)							
+							#unit.state = unit.STATE.attack_move
+							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent())
+							angle += 2.0*PI / 48
 			"units":
 				var angle = 0
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						if get_node(GlobalVars.global_item_selected).data.faction != unit.data.faction:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
-							unit.state = unit.STATE.attack_move
-							unit.attack_init(get_node(GlobalVars.global_item_selected).global_transform.origin)
-							angle += 2.0*PI / 12
+							#unit.state = unit.STATE.attack_move
+							unit.attack_init(get_node(GlobalVars.global_item_selected))
+							print(GlobalVars.global_item_selected)
+							angle += 2.0*PI / 48
 			
 	if !is_holding_modifier and Input.is_action_just_pressed("confirm_build") and GlobalVars.mouse_hovering_ui == false:
 		if GlobalVars.global_item_selected != "":

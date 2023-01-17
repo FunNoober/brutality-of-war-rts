@@ -13,6 +13,8 @@ var mouse_hovering_ui : bool = false
 var active_scene : NodePath
 var active_navigation : NodePath
 
+var dialog_box : PackedScene
+
 var is_playing : bool = false
 
 var current_money : int = 500
@@ -50,6 +52,7 @@ var cur_mode = MODES.defensive
 var global_delta
 
 func _ready() -> void:
+	dialog_box = load("res://assets/prefabs/ui/DialogBox.tscn")
 	var master_bus = AudioServer.get_bus_index("Master")
 	var ui_bus = AudioServer.get_bus_index("UI Sound")
 	var music_bus = AudioServer.get_bus_index("Music")

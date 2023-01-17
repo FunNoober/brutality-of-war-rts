@@ -4,9 +4,10 @@
 [ext_resource path="res://assets/textures-materials/textures/Tiles047/Tiles071_1K_Roughness.png" type="Texture" id=3]
 
 [resource]
-albedo_color = Color( 0, 0, 0, 1 )
+albedo_color = Color( 0.45098, 0.45098, 0.45098, 1 )
 roughness_texture = ExtResource( 3 )
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 2 )
-uv1_scale = Vector3( 10, 10, 10 )
+uv1_scale = Vector3( 5, 5, 5 )
+uv1_triplanar = true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zap.png-c14ce42c0c064e157055f9b94d87cc02.stex"
+path="res://.import/package.png-88ddac515f93ffdff49bb9872fe309e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/zap.png"
-dest_files=[ "res://.import/zap.png-c14ce42c0c064e157055f9b94d87cc02.stex" ]
+source_file="res://assets/icons/building-elements/package.png"
+dest_files=[ "res://.import/package.png-88ddac515f93ffdff49bb9872fe309e9.stex" ]
 
 [params]
 

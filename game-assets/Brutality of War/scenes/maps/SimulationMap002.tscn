@@ -35,11 +35,11 @@ script = ExtResource( 1 )
 game = true
 
 [node name="CameraPivot" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4889, 1.02593, 183.287 )
-camera_bound_x = 207.62
-camera_bound_negative_x = -207.62
-camera_bound_z = 247.708
-camera_bound_negative_z = -241.056
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7468, 1.02593, 113.13 )
+camera_bound_x = 140.046
+camera_bound_negative_x = -140.268
+camera_bound_z = 140.247
+camera_bound_negative_z = -140.245
 
 [node name="Navigation" type="Navigation" parent="."]
 navigation_layers = 3
@@ -85,6 +85,7 @@ shape = SubResource( 5 )
 [node name="MeshInstance2" type="MeshInstance" parent="Navigation/NavigationMeshInstance/Simulation002Wall"]
 mesh = ExtResource( 5 )
 skeleton = NodePath("")
+material/0 = ExtResource( 6 )
 
 [node name="KinematicBody" parent="Navigation" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0053, 0.360861, 102.047 )
@@ -111,7 +112,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3507, 0.197543, 124.705 )
 transform = Transform( -0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -0.291733, 0.197531, -101.068 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.963094, -0.260595, 0.067385, 0.15364, 0.737784, 0.65732, -0.22101, -0.622708, 0.750593, 0, 3, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3, 0 )
 shadow_enabled = true
 
 [node name="NATOOutpost" parent="." instance=ExtResource( 2 )]
