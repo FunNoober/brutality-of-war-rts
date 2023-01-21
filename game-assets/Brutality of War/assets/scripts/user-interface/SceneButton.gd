@@ -1,4 +1,4 @@
-extends Button
+extends ModdableButton
 
 class_name Scene_Button
 

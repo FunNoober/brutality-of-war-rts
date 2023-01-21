@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/DataScripts/MapData.gd"
 }, {
 "base": "Button",
+"class": "ModdableButton",
+"language": "GDScript",
+"path": "res://assets/scripts/user-interface/ModdableButton.gd"
+}, {
+"base": "ModdableButton",
 "class": "Scene_Button",
 "language": "GDScript",
 "path": "res://assets/scripts/user-interface/SceneButton.gd"
@@ -46,6 +51,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Map_Data": "",
+"ModdableButton": "",
 "Scene_Button": "",
 "Unit": "",
 "entity_data": "",

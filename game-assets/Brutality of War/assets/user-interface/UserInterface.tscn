@@ -1,19 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/scripts/user-interface/BuildButton.gd" type="Script" id=1]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOSupplyDepotBlueprint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/user-interface/UserInterface.gd" type="Script" id=3]
 [ext_resource path="res://assets/scripts/user-interface/SellModeButton.gd" type="Script" id=4]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOOutpostBlueprint.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOBarracksBlueprint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOPowerPlantBlueprint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOHeavyMachineGunPosition.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/data/building-data/NATO/NATOHeavyMachineGunPosition.tres" type="Resource" id=9]
-[ext_resource path="res://assets/data/building-data/NATO/NATOPowerPlant.tres" type="Resource" id=10]
-[ext_resource path="res://assets/data/building-data/NATO/NATOBarracks.tres" type="Resource" id=11]
-[ext_resource path="res://assets/data/building-data/NATO/NATOSupplyDepot.tres" type="Resource" id=12]
-[ext_resource path="res://assets/data/building-data/NATO/NATOOutpost.tres" type="Resource" id=13]
-[ext_resource path="res://assets/prefabs/building-blueprints/NATO/NATOCommandandControlCenterBlueprint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/themes/MainTheme.tres" type="Theme" id=15]
 [ext_resource path="res://assets/user-interface/Debug.gd" type="Script" id=16]
 [ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=17]
@@ -53,66 +41,6 @@ margin_right = 143.0
 margin_bottom = 32.0
 text = "Sell Mode"
 script = ExtResource( 4 )
-
-[node name="SupplyDepotButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 61.0
-text = "Supply Depot"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 2 )
-building_data = ExtResource( 12 )
-
-[node name="OutpostButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 61.0
-text = "Outpost"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 5 )
-building_data = ExtResource( 13 )
-
-[node name="BarracksButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 61.0
-text = "Barracks"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 6 )
-building_data = ExtResource( 11 )
-
-[node name="PowerPlantButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 36.0
-margin_right = 143.0
-margin_bottom = 61.0
-text = "Power Plant"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 7 )
-building_data = ExtResource( 10 )
-
-[node name="HeavyMachineGunPositionButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 36.0
-margin_right = 216.0
-margin_bottom = 61.0
-text = "Heavy Machine Gun Position"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 8 )
-building_data = ExtResource( 9 )
-
-[node name="CommandAndControlCenterButton" type="Button" parent="Control/Buttons"]
-visible = false
-margin_top = 65.0
-margin_right = 221.0
-margin_bottom = 90.0
-text = "Command and Control Center"
-script = ExtResource( 1 )
-building_blueprint = ExtResource( 14 )
-building_data = ExtResource( 13 )
 
 [node name="Debug" type="Control" parent="."]
 anchor_right = 1.0

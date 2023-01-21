@@ -227,6 +227,7 @@ margin_top = -37.0
 size_flags_horizontal = 3
 text = "Main Menu"
 script = ExtResource( 3 )
+mod_name = "ReturnToMainMenuFromSettings"
 scene_name = "res://scenes/MainMenu/MainMenu.tscn"
 
 [connection signal="value_changed" from="HBoxContainer/AudioSettings/HBoxContainer/VBoxContainer2/MasterSound" to="." method="_on_MasterSound_value_changed"]

@@ -1,4 +1,4 @@
-extends Button
+extends ModdableButton
 
 func _ready() -> void:
 	connect("pressed", self, "on_button_pressed")

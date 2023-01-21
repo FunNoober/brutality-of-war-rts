@@ -1,9 +1,10 @@
-extends Button
+extends ModdableButton
 
 export var building_blueprint : PackedScene
 export var building_data : Resource
 
 func _ready() -> void:
+	
 	connect("pressed", self, "_on_BuildButton_pressed")
 	connect("mouse_entered", self, "mouse_entered")
 	var sound_player = AudioStreamPlayer.new()

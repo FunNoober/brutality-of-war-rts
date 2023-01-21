@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/RobotoCondensed-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=4]
 [ext_resource path="res://assets/scripts/user-interface/QuitButton.gd" type="Script" id=5]
 [ext_resource path="res://assets/textures-materials/textures/Settings_Background.png" type="Texture" id=6]
+[ext_resource path="res://assets/scripts/Init.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -20,6 +21,19 @@ default_font = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
+script = ExtResource( 7 )
+modding_guide = "# THIS IS AN OFFICIAL MODDING DOCUMENTATION
+## ICONS:
+- ALL ICONS WILL END IN A \".png\"
+- ALL ICONS SHOULD BE \"24x24\" IN SIZE
+- ICON NAMES:
+- hexagon-money
+- circle
+- cpu
+- arrow-left-base
+- package
+- user
+- zap"
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
 anchor_right = 1.0
@@ -54,6 +68,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Wave Defense"
 script = ExtResource( 2 )
+mod_name = "WaveDefense"
 scene_name = "res://scenes/MainMenu/LevelSelectMenu.tscn"
 
 [node name="SettingsButton" type="Button" parent="Control/Buttons"]
@@ -64,6 +79,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Settings"
 script = ExtResource( 2 )
+mod_name = "Settings"
 scene_name = "res://scenes/MainMenu/SettingsMenu.tscn"
 
 [node name="QuitButton" type="Button" parent="Control/Buttons"]
@@ -74,6 +90,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Quit"
 script = ExtResource( 5 )
+mod_name = "Quit"
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5

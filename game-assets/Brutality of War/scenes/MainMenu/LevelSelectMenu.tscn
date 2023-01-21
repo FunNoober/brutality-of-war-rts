@@ -155,6 +155,7 @@ margin_right = 60.0
 margin_bottom = 37.0
 text = "Back"
 script = ExtResource( 6 )
+mod_name = "ReturnToMainMenuFromLevelSelect"
 scene_name = "res://scenes/MainMenu/MainMenu.tscn"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

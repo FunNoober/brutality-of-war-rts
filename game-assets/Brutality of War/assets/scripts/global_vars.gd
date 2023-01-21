@@ -49,6 +49,8 @@ var completion_mode
 var cur_state = STATES.normal
 var cur_mode = MODES.defensive
 
+var mod_extension = ".bowmod"
+
 var global_delta
 
 func _ready() -> void:
