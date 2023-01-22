@@ -79,6 +79,24 @@ func _ready() -> void:
 			OS.set_use_vsync(false)
 		elif contents_as_dictionary.vsync == 1:
 			OS.set_use_vsync(true)
+			
+		if contents_as_dictionary.msaa == 0:
+			get_viewport().msaa = Viewport.MSAA_DISABLED
+		if contents_as_dictionary.msaa == 1:
+			get_viewport().msaa = Viewport.MSAA_2X
+		if contents_as_dictionary.msaa == 2:
+			get_viewport().msaa = Viewport.MSAA_4X
+		if contents_as_dictionary.msaa == 3:
+			get_viewport().msaa = Viewport.MSAA_8X
+			
+		if contents_as_dictionary.physics_fps == 0:
+			Engine.iterations_per_second = 60
+		if contents_as_dictionary.physics_fps == 1:
+			Engine.iterations_per_second = 30
+		if contents_as_dictionary.physics_fps == 2:
+			Engine.iterations_per_second = 24
+		if contents_as_dictionary.physics_fps == 3:
+			Engine.iterations_per_second = 15
 
 func _process(delta: float) -> void:
 	if infinite_money == true:

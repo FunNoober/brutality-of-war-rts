@@ -15,7 +15,7 @@ var moddable_data = {
 func _ready() -> void:
 	var f = File.new()
 	if f.file_exists("user://" + mod_name + "_b" + extension):
-		f.open("user://" + mod_name + extension, f.READ)
+		f.open("user://" + mod_name + "_b" + extension, f.READ)
 		var contents_as_dictionary = parse_json(f.get_as_text())
 		text = contents_as_dictionary.text
 		

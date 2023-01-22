@@ -20,7 +20,9 @@ var data_to_store = {
 	"announcer_sound" : 0.0,
 	"windowed" : 0,
 	"vsync" : 0,
-	"fov" : 80
+	"fov" : 80,
+	"msaa" : 0,
+	"physics_fps" : 0
 }
 
 func _ready() -> void:
@@ -42,6 +44,8 @@ func _ready() -> void:
 		$HBoxContainer/VideoSettings/WindowedOption.select(contents_as_dictionary.windowed)
 		$HBoxContainer/VideoSettings/VsyncOption.select(contents_as_dictionary.vsync)
 		$HBoxContainer/VideoSettings/HBoxContainer/FOVSlider.value = contents_as_dictionary.fov
+		$HBoxContainer/VideoSettings/MSAAOption.select(contents_as_dictionary.msaa)
+		$HBoxContainer/VideoSettings/PhysicsFPSOption.select(contents_as_dictionary.physics_fps)
 		
 
 func _process(delta: float) -> void:
@@ -65,6 +69,30 @@ func _on_OptionButton2_item_selected(index: int) -> void:
 	elif index == 1:
 		OS.set_use_vsync(true)
 	data_to_store.vsync = index
+	save()
+
+func _on_MSAAOption_item_selected(index: int) -> void:
+	if index == 0:
+		get_viewport().msaa = Viewport.MSAA_DISABLED
+	if index == 1:
+		get_viewport().msaa = Viewport.MSAA_2X
+	if index == 2:
+		get_viewport().msaa = Viewport.MSAA_4X
+	if index == 3:
+		get_viewport().msaa = Viewport.MSAA_8X
+	data_to_store.msaa = index
+	save()
+
+func _on_PhysicsFPSOption_item_selected(index: int) -> void:
+	if index == 0:
+		Engine.iterations_per_second = 60
+	if index == 1:
+		Engine.iterations_per_second = 30
+	if index == 2:
+		Engine.iterations_per_second = 24
+	if index == 3:
+		Engine.iterations_per_second = 15
+	data_to_store.physics_fps = index
 	save()
 
 func _on_FOVSlider_value_changed(value: float) -> void:
@@ -104,3 +132,6 @@ func _on_MusicSound_value_changed(value: float) -> void:
 
 func _on_CheatMenuButton_toggled(button_pressed: bool) -> void:
 	GlobalVars.cheat_menu_enabled = button_pressed
+
+
+
