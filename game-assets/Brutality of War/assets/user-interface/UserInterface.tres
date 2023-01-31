@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto-Light.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/icons/ui-elements/unchecked.png" type="Texture" id=2]
@@ -11,6 +11,7 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -23,6 +24,7 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -35,6 +37,7 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0.027451, 0.4, 0.682353, 0.541176 )
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -76,6 +79,16 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0.25098 )
+border_width_top = 35
+border_color = Color( 0, 0, 0, 0.501961 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_top = 35.0
+
 [sub_resource type="DynamicFont" id=1]
 size = 24
 use_mipmaps = true
@@ -92,3 +105,7 @@ CheckBox/icons/unchecked = ExtResource( 2 )
 HSlider/styles/grabber_area = SubResource( 5 )
 HSlider/styles/grabber_area_highlight = SubResource( 7 )
 HSlider/styles/slider = SubResource( 6 )
+WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/constants/close_v_ofs = 25
+WindowDialog/constants/title_height = 40
+WindowDialog/styles/panel = SubResource( 8 )

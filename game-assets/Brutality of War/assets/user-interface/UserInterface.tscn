@@ -30,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.25098 )
 
 [node name="Buttons" type="VBoxContainer" parent="Control"]
 anchor_bottom = 1.0
@@ -55,9 +55,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -239.0
-margin_top = -58.0
-margin_bottom = 121.0
+margin_left = -248.0
+margin_top = -99.5
+margin_bottom = 99.5
+theme = ExtResource( 17 )
 window_title = "Debug"
 resizable = true
 
@@ -68,47 +69,48 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TimescaleSlider" type="HBoxContainer" parent="Debug/DebugPopup/Control"]
-margin_right = 239.0
-margin_bottom = 27.0
+margin_right = 248.0
+margin_bottom = 29.0
 
 [node name="TimerscaleEdit" type="HSlider" parent="Debug/DebugPopup/Control/TimescaleSlider"]
-margin_right = 162.0
+margin_right = 138.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
+theme = ExtResource( 17 )
 max_value = 10.0
 value = 1.0
 tick_count = 10
 
 [node name="TimescaleLabel" type="Label" parent="Debug/DebugPopup/Control/TimescaleSlider"]
-margin_left = 166.0
-margin_right = 239.0
-margin_bottom = 27.0
+margin_left = 142.0
+margin_right = 248.0
+margin_bottom = 29.0
 text = "Timescale"
 
 [node name="Add1000MoneyButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 31.0
-margin_right = 239.0
-margin_bottom = 66.0
+margin_top = 33.0
+margin_right = 248.0
+margin_bottom = 70.0
 text = "+ $1000"
 
 [node name="SetMoney" type="SpinBox" parent="Debug/DebugPopup/Control"]
-margin_top = 70.0
-margin_right = 239.0
-margin_bottom = 107.0
+margin_top = 74.0
+margin_right = 248.0
+margin_bottom = 113.0
 max_value = 100000.0
 prefix = "Money ="
 
 [node name="LoseGameButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 111.0
-margin_right = 239.0
-margin_bottom = 146.0
+margin_top = 117.0
+margin_right = 248.0
+margin_bottom = 154.0
 text = "Instant Lose Match"
 
 [node name="WinGameButton" type="Button" parent="Debug/DebugPopup/Control"]
-margin_top = 150.0
-margin_right = 239.0
-margin_bottom = 185.0
+margin_top = 158.0
+margin_right = 248.0
+margin_bottom = 195.0
 text = "Instant Win Match"
 
 [node name="PauseMenu" type="Control" parent="."]

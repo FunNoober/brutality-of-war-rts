@@ -47,6 +47,7 @@ bg_color = Color( 0.0352941, 0.517647, 0.890196, 0.356863 )
 corner_radius_bottom_right = 12
 
 [sub_resource type="DynamicFont" id=1]
+size = 56
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = 4
