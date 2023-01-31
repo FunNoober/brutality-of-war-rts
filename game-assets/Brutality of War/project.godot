@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Button",
 "class": "ModdableButton",
 "language": "GDScript",
-"path": "res://assets/scripts/user-interface/ModdableButton.gd"
+"path": "res://assets/scripts/moddable/ModdableButton.gd"
 }, {
 "base": "ModdableButton",
 "class": "Scene_Button",

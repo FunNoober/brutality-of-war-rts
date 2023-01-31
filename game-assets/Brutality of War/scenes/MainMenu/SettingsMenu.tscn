@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/user-interface/UserInterface.tres" type="Theme" id=1]
 [ext_resource path="res://assets/scripts/user-interface/SettingsMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/user-interface/SceneButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/textures-materials/textures/Settings_Background.png" type="Texture" id=4]
+[ext_resource path="res://assets/scripts/moddable/ModdableTextureRect.gd" type="Script" id=5]
 
 [node name="SettingsMenu" type="Control"]
 anchor_right = 1.0
@@ -18,6 +19,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 4 )
 expand = true
+script = ExtResource( 5 )
+texture_name = "Settings_Background.png"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0

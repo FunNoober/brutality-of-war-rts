@@ -44,22 +44,22 @@ theme = ExtResource( 8 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -166.0
+margin_left = -416.0
 alignment = 1
 
 [node name="RiflemanButton" type="Button" parent="CanvasLayer/Control/Toolbar"]
-margin_top = 323.0
-margin_right = 166.0
-margin_bottom = 358.0
+margin_top = 493.0
+margin_right = 416.0
+margin_bottom = 538.0
 text = "Rifleman"
 script = ExtResource( 3 )
 unit_to_spawn = ExtResource( 4 )
 unit_data = ExtResource( 6 )
 
 [node name="MachineGunnerButton" type="Button" parent="CanvasLayer/Control/Toolbar"]
-margin_top = 362.0
-margin_right = 166.0
-margin_bottom = 397.0
+margin_top = 542.0
+margin_right = 416.0
+margin_bottom = 587.0
 text = "Machine Gunner"
 script = ExtResource( 3 )
 unit_to_spawn = ExtResource( 10 )
