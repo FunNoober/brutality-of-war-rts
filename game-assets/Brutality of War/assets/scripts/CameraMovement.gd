@@ -113,7 +113,7 @@ func _process(delta: float) -> void:
 					if is_instance_valid(unit):
 						if selected_units.size() >= 2:
 							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)
-							unit.state = unit.STATE.moving
+							#unit.state = unit.STATE.moving
 							angle += 2.0*PI / 48
 						else:
 							unit.move_to(GlobalVars.global_mouse_pos)
@@ -123,7 +123,7 @@ func _process(delta: float) -> void:
 				for unit in selected_units:
 					if is_instance_valid(unit):
 						if get_node(GlobalVars.global_item_selected).get_parent().data.faction != unit.data.faction:
-							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)							
+							unit.move_to(GlobalVars.global_mouse_pos + Vector3(cos(angle), 0, sin(angle)) * unit.data.attack_range)	
 							#unit.state = unit.STATE.attack_move
 							unit.attack_init(get_node(GlobalVars.global_item_selected).get_parent())
 							angle += 2.0*PI / 48

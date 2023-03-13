@@ -151,6 +151,10 @@ enable_debug={
  ]
 }
 
+[mono]
+
+project/assembly_name="Brutality of War"
+
 [physics]
 
 common/enable_pause_aware_picking=true
