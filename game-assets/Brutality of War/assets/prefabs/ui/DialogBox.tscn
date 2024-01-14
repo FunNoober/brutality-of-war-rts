@@ -41,11 +41,11 @@ size_flags_vertical = 3
 
 [node name="Character" type="Label" parent="ColorRect/Contents/Text"]
 margin_right = 466.0
-margin_bottom = 27.0
+margin_bottom = 37.0
 text = "Godot Robot"
 
 [node name="Dialog" type="RichTextLabel" parent="ColorRect/Contents/Text"]
-margin_top = 31.0
+margin_top = 41.0
 margin_right = 466.0
 margin_bottom = 142.0
 size_flags_horizontal = 3

@@ -4,7 +4,7 @@ export var data : Resource
 
 enum STATE {
 	idle,
-	moving,
+	move,
 	attack_move,
 	attacking,
 	dead
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		state = STATE.dead
 	
 	match state:
-		STATE.moving:
+		STATE.move:
 			do_moving(delta)
 		STATE.attack_move:
 			do_moving(delta)
@@ -104,7 +104,7 @@ func _on_NavigationAgent_velocity_computed(safe_velocity: Vector3) -> void:
 func _on_NavigationAgent_navigation_finished() -> void:
 	if state == STATE.attack_move:
 		state = STATE.attacking
-	if state == STATE.moving:
+	if state == STATE.move:
 		state = STATE.idle
 
 func vision_entered(body):

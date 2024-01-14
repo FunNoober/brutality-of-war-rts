@@ -23,7 +23,6 @@ game = true
 
 [node name="CameraPivot" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52782, 1.02593, 435.857 )
-camera_bounds = Vector2( 205, 463 )
 
 [node name="Navigation" type="Navigation" parent="."]
 navigation_layers = 3
